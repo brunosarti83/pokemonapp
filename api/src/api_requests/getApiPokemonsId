@@ -1,0 +1,22 @@
+const axios = require('axios');
+
+
+const getApiPokemonsId = async (id) => {
+    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    const { name, height, weight, stats, types } = data
+    const image = data.sprites.other['official-artwork'].front_default
+    const pokemon = { id, name, image, height, weight }
+    const props = [ 'hp', 'attack', 'defense', 'speed' ]
+    props.forEach(prop => {
+        stats.forEach(stat => {
+            if (stat.name === prop) {
+                pokemon[prop] = stat.base_stat
+            }
+        })
+    })
+    pokemon.types = []
+    types.forEach(tipo => { pokemon.types.push(tipo.type.name) })
+    return pokemon
+}
+
+module.exports = getApiPokemonsId;
