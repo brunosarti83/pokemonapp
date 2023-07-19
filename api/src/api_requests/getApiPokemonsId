@@ -1,11 +1,11 @@
 const axios = require('axios');
 
 
-const getApiPokemonsId = async (id) => {
-    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+const getApiPokemonsId = async (originalId) => {
+    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${originalId}`)
     const { name, height, weight, stats, types } = data
     const image = data.sprites.other['official-artwork'].front_default
-    const pokemon = { id, name, image, height, weight }
+    const pokemon = { originalId, name, image, height, weight }
     const props = [ 'hp', 'attack', 'defense', 'speed' ]
     props.forEach(prop => {
         stats.forEach(stat => {
