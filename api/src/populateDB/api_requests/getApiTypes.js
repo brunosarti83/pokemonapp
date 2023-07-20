@@ -5,7 +5,8 @@ const getApiTypes = async () => {
     const { results } = data
     const types = []
     results.forEach(obj => {
-        types.push(obj.name)
+        const { name } = obj
+        types.push({ name })
     });
     return types
 }
