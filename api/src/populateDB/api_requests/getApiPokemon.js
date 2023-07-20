@@ -21,9 +21,13 @@ const getApiPokemon = async (input) => {
                 }
             })
         })
-        const origTypes = []
-        types.forEach(tipo => { origTypes.push(tipo.type.name) })
-        return { pokemon, origTypes }
+        const typeIds = []
+        types.forEach(type => { 
+            const url = type.type.url
+            const id = url.split('/').at(-2)
+            typeIds.push(Number(id)) 
+        })
+        return { pokemon, typeIds }
         
     } catch (error) {
         console.log(error.message)
