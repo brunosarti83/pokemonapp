@@ -6,9 +6,10 @@ const getPokemons = async () => {
             attributes: ['id', 'originalId', 'name', 'image', 'attack'],
             include: {
                 model: Type,
-                attributes: {
-                    include: ['name']
-                },
+                attributes: ['name'],
+                through: {
+                    attributes: []
+                }
             }
         })
         return pokemons
