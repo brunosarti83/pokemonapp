@@ -1,1 +1,2 @@
-SELECT * FROM Types;
+SELECT * FROM "Pokemons"
+WHERE "originalId" = 752;

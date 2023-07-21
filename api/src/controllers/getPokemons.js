@@ -1,12 +1,12 @@
-const getPokemons = require('../handlers/getPokemons');
+const getPokemonsHandler = require('../handlers/getPokemonsHandler');
 
-const getPokemonsCtrl = async (req, res) => {
+const getPokemons = async (req, res) => {
     try {
-        const pokemons = await getPokemons()
+        const pokemons = await getPokemonsHandler()
         res.status(200).json(pokemons)
     } catch (error) {
-        res.status(500).send(error.message)
+        res.status(500).json({error: error.message})
     }
 }
 
-module.exports = getPokemonsCtrl;
+module.exports = getPokemons;
