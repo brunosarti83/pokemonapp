@@ -9,7 +9,6 @@ const populateDB = async () => {
         const apiTypes = await getApiTypes()
         await Type.bulkCreate(apiTypes)
 
-        const DB_Types = await Type.findAll()
         const AllPokemons = await getApiAllPokemons()
         
         const requests = AllPokemons.map(req => getApiPokemon(req.url))

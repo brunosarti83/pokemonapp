@@ -4,19 +4,23 @@ const { Router } = require('express');
 const getPokemons = require('../controllers/getPokemons')
 const getTypes = require('../controllers/getTypes')
 const getPokemonDetail = require('../controllers/getPokemonDetail')
+const getPokemonByName = require('../controllers/getPokemonByName')
+const postPokemon = require('../controllers/postPokemon')
 
+//eliminar
 const getMissingPokemon = require('../../debugging/getMissingPokemon')
 
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.use('/pokemons/:idPokemon', getPokemonDetail)
-router.use('/pokemons', ) // query
-router.use('/pokemons', getPokemons)
-router.use('/types', getTypes)
+router.get('/pokemons/:idPokemon', getPokemonDetail)
+router.get('/pokemons', getPokemonByName)
+router.get('/pokemons', getPokemons)
+router.post('/pokemons', postPokemon)
+router.get('/types', getTypes)
 
-
-router.use('/debug', getMissingPokemon)
+//eliminar
+router.get('/debug', getMissingPokemon)
 
 module.exports = router;
