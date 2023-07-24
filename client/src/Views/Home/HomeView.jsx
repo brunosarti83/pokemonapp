@@ -1,9 +1,11 @@
 
 
-export default HomeView = () => {
+const HomeView = () => {
 
     return (
         <>
         </>
     )
 }
+
+export default HomeView;

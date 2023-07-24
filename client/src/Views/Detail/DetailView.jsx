@@ -1,9 +1,11 @@
 
 
-export default DetailView = () => {
+const DetailView = () => {
 
     return (
         <>
         </>
     )
 }
+
+export default DetailView;

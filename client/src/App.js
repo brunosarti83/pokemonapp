@@ -5,9 +5,9 @@ import { Routes, Route } from 'react-router-dom';
 
 //Views
 import LandingView from './Views/Landing/LandingView'
-import HomeView from './Views/Landing/HomeView'
-import DetailView from './Views/Landing/DetailView'
-import CreateView from './Views/Landing/CreateView'
+import HomeView from './Views/Home/HomeView'
+import DetailView from './Views/Detail/DetailView'
+import CreateView from './Views/Create/CreateView'
 
 function App() {
   return (

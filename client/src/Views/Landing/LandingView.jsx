@@ -1,7 +1,7 @@
 //Components
 import Landing from '../../Components/Landing/Landing';
 
-export default LandingView = () => {
+const LandingView = () => {
 
     return (
         <>
@@ -9,3 +9,5 @@ export default LandingView = () => {
         </>
     )
 }
+
+export default LandingView;
