@@ -1,0 +1,9 @@
+
+
+export default HomeView = () => {
+
+    return (
+        <>
+        </>
+    )
+}
