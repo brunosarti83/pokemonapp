@@ -1,4 +1,4 @@
-const { GET_POKEMONS } = './actions';
+import { GET_POKEMONS } from './actions';
 
 const initialState = {
     allPokemons: []
