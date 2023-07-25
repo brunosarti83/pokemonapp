@@ -2,7 +2,7 @@
 import getAllPokemons from '../api_requests/getAllPokemons';
 
 // actions
-export const GET_POKEMONS = 'GET_POKEMONS'
+export const GET_POKEMONS = 'GET_POKEMONS';
 
 
 export const getPokemons = () => {
