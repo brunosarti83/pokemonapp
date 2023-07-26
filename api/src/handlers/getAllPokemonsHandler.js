@@ -1,6 +1,6 @@
 const { Type, Pokemon } = require('../db');
 
-const getPokemonsHandler = async () => {
+const getAllPokemonsHandler = async () => {
     try {
         const pokemons = await Pokemon.findAll({
             attributes: ['id', 'originalId', 'name', 'image', 'attack'],
@@ -18,4 +18,4 @@ const getPokemonsHandler = async () => {
     }
 }
 
-module.exports = getPokemonsHandler;
+module.exports = getAllPokemonsHandler;
