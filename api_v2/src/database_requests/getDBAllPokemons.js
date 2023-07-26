@@ -3,7 +3,7 @@ const { Type, Pokemon } = require('../db');
 const getDBAllPokemons = async () => {
     try {
         const dbPokemons = await Pokemon.findAll({
-            attributes: ['id', 'name', 'image', 'hp', 'attack', 'defense', 'speed'],
+            attributes: ['id', 'name', 'image', 'attack'],
             include: {
                 model: Type,
                 attributes: ['name'],

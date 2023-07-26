@@ -1,5 +1,6 @@
 const axios = require('axios');
 const getApiPokemon = require('./getApiPokemon');
+const formatForCards = require('./formatForCards');
 
 
 const getApiAllPokemons = async () => {
@@ -7,7 +8,7 @@ const getApiAllPokemons = async () => {
         const endpoint = `https://pokeapi.co/api/v2/pokemon?limit=2000`
         const { data } = await axios.get(endpoint)
         const { results } = data
-        const requests = results.map(result => getApiPokemon(result.url))
+        const requests = results.map(result => getApiPokemon(result.url, formatForCards))
         const responses = await Promise.all(requests)
         return responses
         

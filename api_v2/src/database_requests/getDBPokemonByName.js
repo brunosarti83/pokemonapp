@@ -6,6 +6,7 @@ const getDBPokemonByName = async (name) => {
             where: {
                 name: name
             },
+            attributes: ['id', 'name', 'image', 'attack'],
             include: {
                 model: Type,
                 attributes: ['name'],
