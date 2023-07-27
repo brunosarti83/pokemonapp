@@ -9,9 +9,9 @@ const Card = (props) => {
             <img src={image} alt={`${name}`} />
             <div className={styles.Name}>{name}</div>
             <div className={styles.Types}>
-                {/* {types.map((type,i) => {
-                    return <div key={i} className={styles.typeTag}>{type}</div>
-                })} */}
+                {types.map((type, index) => {
+                    return (<div key={index} className={styles.typeTag}>{type.name}</div>)
+                })}
             </div>
         </div>
     )
