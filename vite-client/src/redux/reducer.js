@@ -15,7 +15,7 @@ const rootReducer = (state = initialState, action) => {
             }
         case FILTER_POKEMONS:
             const { type, origin, orderBy, direction } = action.payload
-            const filtered = [...state.savedPokemons]
+            let filtered = [...state.savedPokemons]
             if (type !== 'all') {
                 filtered = filtered.filter(poke => poke.Types.some(tipo => tipo.name === type))
             }
@@ -26,9 +26,32 @@ const rootReducer = (state = initialState, action) => {
                     filtered = filtered.filter(poke => !Boolean(Number(poke.id)))
                 }
             }
-                         
-
-            
+            if (orderBy === 'name') {
+                filtered.sort((a, b) => {
+                    if (a.name < b.name) {
+                        return (direction === 'A') ? -1 : 1
+                    } else if (a.name > b.name) {
+                        return (direction === 'A') ? 1 : -1
+                    } else {
+                        return 0
+                    }
+                })
+            } else if (orderBy === 'attack') {
+                filtered.sort((a, b) => {
+                    if (a.attack < b.attack) {
+                        return (direction === 'A') ? -1 : 1
+                    } else if (a.attack > b.attack) {
+                        return (direction === 'A') ? 1 : -1
+                    } else {
+                        return 0
+                    }
+                })
+            }
+            return {
+                ...state,
+                allPokemons: filtered
+            }
+        
         default:
             return state
     }

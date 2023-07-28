@@ -21,13 +21,22 @@ const Cards = () => {
     useEffect(() => {
         dispatch(getPokemons())
     }, [])
+    
+    useEffect(() => {
+        setPag(1)
+        const indexTo = (pokemonsPerPage * pag)
+        const indexFrom = indexTo - pokemonsPerPage
+        const thisPagePokemons = allPokemons.slice(indexFrom, indexTo) // included, excluded
+        setNowShowing(thisPagePokemons)
+    }, [allPokemons])
 
     useEffect(() => {
-        const indexTo = (pokemonsPerPage * pag) - 1
-        const indexFrom = indexTo - 11
-        const thisPagePokemons = allPokemons.slice(indexFrom, indexTo)
+        const indexTo = (pokemonsPerPage * pag)
+        const indexFrom = indexTo - pokemonsPerPage
+        const thisPagePokemons = allPokemons.slice(indexFrom, indexTo) // included, excluded
         setNowShowing(thisPagePokemons)
-    }, [pag, allPokemons])
+    }, [pag])
+
 
     const previousPage = () => {
         setPag(pag-1)

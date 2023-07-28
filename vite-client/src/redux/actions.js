@@ -27,3 +27,5 @@ export const filterPokemons = (filterObj) => {
     }
 }
 
+
+
