@@ -3,6 +3,7 @@ import getAllPokemons from '../api_requests/getAllPokemons';
 
 // actions
 export const GET_POKEMONS = 'GET_POKEMONS';
+export const FILTER_POKEMONS = 'FILTER_POKEMONS';
 
 
 export const getPokemons = () => {
@@ -16,6 +17,13 @@ export const getPokemons = () => {
         } catch (error) {
             window.alert(error.message)
         }
+    }
+}
+
+export const filterPokemons = (filterObj) => {
+    return {
+        type: FILTER_POKEMONS,
+        payload: filterObj
     }
 }
 
