@@ -98,7 +98,7 @@ const Filters = () => {
                 </div>
             </div>
             <div className={styles.controls}>
-                <div className={styles.reset} onClick={handleReset}>Reset Filters</div>
+                <div className={styles.reset} onClick={handleReset}>Reset</div>
             </div>
         </div>
     )

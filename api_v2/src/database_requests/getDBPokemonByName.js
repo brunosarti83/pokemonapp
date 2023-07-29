@@ -1,10 +1,13 @@
+// models
 const { Pokemon, Type } = require('../db');
+// Op
+const { Op } = require('sequelize');
 
 const getDBPokemonByName = async (name) => {
     try {
         const pokemon = await Pokemon.findAll({ 
             where: {
-                name: name
+                name: { [Op.like]: `%${name}%`}
             },
             attributes: ['id', 'name', 'image', 'attack'],
             include: {
