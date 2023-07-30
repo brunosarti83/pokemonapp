@@ -85,7 +85,7 @@ const Filters = () => {
             <div className={styles.order}>
                 <div className={styles.orderBy}>
                     <label htmlFor="orderBy">Order by: </label>
-                    <select name="orderBy" id="order-by" onChange={handleFilters} value={filterObj.orderBy}>
+                    <select name="orderBy" id="orderBy" onChange={handleFilters} value={filterObj.orderBy}>
                         <option value="none">-None-</option>
                         <option value="name">Name</option>
                         <option value="attack">Attack</option>

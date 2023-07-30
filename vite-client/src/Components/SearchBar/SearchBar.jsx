@@ -35,7 +35,7 @@ const SearchBar = () => {
     return (
         <div className={styles.horizontalBar}>
             <h3>SearchBar</h3>
-            <input className={styles.inputSearch} type='search' onChange={handleChange} value={name} placeholder={placeholder} onKeyDown={handleKeyPress}/>
+            <input className={styles.inputSearch} id='searchInput' type='search' onChange={handleChange} value={name} placeholder={placeholder} onKeyDown={handleKeyPress}/>
             <div className={styles.searchButton} onClick={()=> onClick(name)}>Search</div>
         </div>
     )

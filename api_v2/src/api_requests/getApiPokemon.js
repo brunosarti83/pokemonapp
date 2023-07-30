@@ -8,7 +8,7 @@ const getApiPokemon = async (input, formattingFunction) => {
         return pokemon
 
     } catch (error) {
-        console.log(error.message)
+        throw error
     }
 }
 

@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path={ROUTES.landing} element={<LandingView/>}></Route>
         <Route path={ROUTES.home} element={<HomeView/>}></Route>
-        <Route path={ROUTES.detail} element={<DetailView/>}></Route>
+        <Route path={ROUTES.detail + ':id'} element={<DetailView/>}></Route>
         <Route path={ROUTES.create} element={<CreateView/>}></Route>
       </Routes>
     </div>
