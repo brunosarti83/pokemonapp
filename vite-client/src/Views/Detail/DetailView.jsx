@@ -4,7 +4,7 @@ import styles from './DetailView.module.css';
 import Detail from '../../Components/Detail/Detail';
 // hooks
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // api-requests
 import getPokemonDetail from '../../api_requests/getPokemonDetail';
 
@@ -26,7 +26,7 @@ const DetailView = () => {
 
     return (
         <div>
-            <Detail pokemon={pokemon}/>
+            {pokemon.id && <Detail pokemon={pokemon}/>}
         </div>
     )
 }
