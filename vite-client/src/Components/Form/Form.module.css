@@ -1,0 +1,29 @@
+
+
+
+
+.typesSelector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.typeTagOff {
+    min-width: 70px;
+    padding: 5px 50px;
+    border: 1px solid blue;
+}
+
+.typeTagOn {
+    min-width: 70px;
+    padding: 5px 50px;
+    border: 1px solid blue;
+}
+
+.typeTagOn:hover {
+    cursor: pointer;
+}
+
+.typeTagOff:hover {
+    cursor: pointer;
+}

@@ -6,12 +6,13 @@ import { ROUTES } from '../../helpers/ROUTES';
 
 
 const Detail = (props) => {
-    const {id, name, image, attack, defense, speed, height, weight, Types} = props.pokemon
+    const {id, name, image, hp, attack, defense, speed, height, weight, Types} = props.pokemon
 
     return(
         <div>
             <img src={image} alt={name} />
             <h4>{name}</h4>
+            <h5>Health: {hp}</h5>
             <h5>Attack: {attack}</h5>
             <h5>Defense: {defense}</h5>
             <h5>Speed: {speed ? speed : '-'}</h5>
