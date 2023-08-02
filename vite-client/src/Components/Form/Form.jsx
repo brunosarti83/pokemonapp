@@ -41,7 +41,7 @@ const Form = () => {
             setTypes(typesObj)
         })
         .catch(error => {
-            window.alert('Unable to load Pokemon types') 
+            window.alert(`Unable to load Pokemon types: ${error.message}`) 
         })
     },[])
 
