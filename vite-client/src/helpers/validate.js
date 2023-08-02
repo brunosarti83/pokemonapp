@@ -76,18 +76,40 @@ const validateTypes = (types) => {
 }
 
 
-const validate = (pokemon) => {
+const validate = (pokemon, prop, errors) => {
     const { name, hp, attack, defense, speed, height, weight, types } = pokemon
-    const errors = {}
-    errors.name = validateName(name)
-    errors.hp = validateHealth(Number(hp))
-    errors.attack = validateAttack(Number(attack))
-    errors.defense = validateDefense(Number(defense))
-    errors.speed = validateSpeed(Number(speed))
-    errors.stats = validateStats(Number(hp), Number(attack), Number(defense), Number(speed))
-    errors.height = validateHeight(Number(height))
-    errors.weight = validateWeight(Number(weight))
-    errors.types = validateTypes(types)
+    switch (prop) {
+        case 'name':
+            errors.name = validateName(name)
+            break
+        case 'hp':
+            errors.hp = validateHealth(Number(hp))
+            errors.stats = validateStats(Number(hp), Number(attack), Number(defense), Number(speed))
+            break
+        case 'attack':
+            errors.attack = validateAttack(Number(attack))
+            errors.stats = validateStats(Number(hp), Number(attack), Number(defense), Number(speed))
+            break
+        case 'defense':
+            errors.defense = validateDefense(Number(defense))
+            errors.stats = validateStats(Number(hp), Number(attack), Number(defense), Number(speed))
+            break
+        case 'speed':
+            errors.speed = validateSpeed(Number(speed))
+            errors.stats = validateStats(Number(hp), Number(attack), Number(defense), Number(speed))
+            break
+        case 'height':
+            errors.height = validateHeight(Number(height))
+            break
+        case 'weight':
+            errors.weight = validateWeight(Number(weight))
+            break
+        case 'types':
+            errors.types = validateTypes(types)
+            break
+        default:
+            return errors
+        }
     return errors
 }
 
