@@ -5,6 +5,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 // actions
 import { getByName } from '../../redux/actions';
+// images
+import pokeLogo from '../../images/black-pokemon-logo-transparent-27.png';
+import pokeBall from '../../images/pokeball-logo.png';
 
 const SearchBar = () => {
 
@@ -12,31 +15,34 @@ const SearchBar = () => {
     const dispatch = useDispatch()
 
     const handleChange = (event) => {
-       setName(event.target.value)
+        setName(event.target.value)
     }
 
     const onSearch = (name) => {
         dispatch(getByName(name))
-    } 
+    }
 
-   const onClick = (name) => {
-      onSearch(name)
-      setName('')
-   }
+    const onClick = (name) => {
+        onSearch(name)
+        setName('')
+    }
 
-   const handleKeyPress = (event) => {
-      if (event.key === 'Enter') {
-         onClick(name)
-      }
-   }
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            onClick(name)
+        }
+    }
 
-   const placeholder = '... search by NAME'
+    const placeholder = '... search by NAME'
 
     return (
         <div className={styles.horizontalBar}>
-            <h3>SearchBar</h3>
-            <input className={styles.inputSearch} id='searchInput' type='search' onChange={handleChange} value={name} placeholder={placeholder} onKeyDown={handleKeyPress}/>
-            <div className={styles.searchButton} onClick={()=> onClick(name)}>Search</div>
+            <input className={styles.inputSearch} id='searchInput' type='search' onChange={handleChange} value={name} placeholder={placeholder} onKeyDown={handleKeyPress} />
+            <div className={styles.searchButton} onClick={() => onClick(name)}>Search</div>
+            <div className={styles.logoSector}>
+                <img className={styles.logo} src={pokeLogo} alt='Pokemon-logo' />
+                <img className={styles.pokeball} src={pokeBall} alt='Pokemon-ball' />
+            </div>
         </div>
     )
 }

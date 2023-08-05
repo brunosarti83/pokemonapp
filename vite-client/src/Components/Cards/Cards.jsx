@@ -21,7 +21,7 @@ const Cards = () => {
     useEffect(() => {
         dispatch(getPokemons())
     }, [])
-    
+
     useEffect(() => {
         setPag(1)
         const indexTo = (pokemonsPerPage * pag)
@@ -40,19 +40,18 @@ const Cards = () => {
 
     const previousPage = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
-        setPag(pag-1)
-    } 
+        setPag(pag - 1)
+    }
 
     const nextPage = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
-        setPag(pag+1)
-    } 
+        setPag(pag + 1)
+    }
 
     return (
         <div>
-            <h1>This is Cards</h1>
-            <div>
-                { nowShowing.map(pokemon => {
+            <div className={styles.cardSection}>
+                {nowShowing.map(pokemon => {
                     return <Card key={pokemon.id}
                         id={pokemon.id}
                         name={pokemon.name}
@@ -62,8 +61,8 @@ const Cards = () => {
                 }
             </div>
             <div className={styles.buttons}>
-                <div className={(pag > 1) ? styles.backButton : styles.noShow} onClick={previousPage}>Back</div>
-                <div className={(pag * pokemonsPerPage < allPokemons.length) ? styles.nextButton : styles.noShow} onClick={nextPage}>Next</div>
+                <div className={(pag > 1) ? styles.backButton : styles.noShow} onClick={previousPage}>{'Back'}</div>
+                <div className={(pag * pokemonsPerPage < allPokemons.length) ? styles.nextButton : styles.noShow} onClick={nextPage}>{'Next'}</div>
             </div>
         </div>
     )

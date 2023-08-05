@@ -1,0 +1,55 @@
+
+.Container {
+    display: grid;
+    height: 500px;
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    text-align: left;
+}
+
+.image {
+    grid-column: 2 / 12;
+    grid-row: 2 / 7;
+    background: url('../../images/toda-la-banda.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 16px;
+    box-shadow: -2px 3px 4px 4px rgba(15,15,15, 0.3);
+    filter: brightness(0.8);
+}
+
+.heroH1, .heroH3, .heroH4 {
+    z-index: 2;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    margin-left: 10px;
+    max-width: 350px;
+}
+
+.heroH1 { 
+    margin-top: 30px;
+    grid-column: 2 / 10;
+    grid-row: 2 / 3;
+}
+
+.heroH3 {
+    margin-top: 20px;
+    grid-column: 2 / 10;
+    grid-row: 3 / 4;
+}
+
+.heroH4 {
+    margin-top: 10px;
+    grid-column: 2 / 10;
+    grid-row: 5 / 6;
+}
+
+.Search {
+    grid-column: 1 / 13;
+    grid-row: 4 / 5;
+    position: sticky;
+    top: 0px;
+    z-index: 3;
+}

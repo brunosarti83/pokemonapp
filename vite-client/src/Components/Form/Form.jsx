@@ -1,7 +1,9 @@
 // styles
 import styles from './Form.module.css';
-// hooks
+// hooks and tools
 import { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { ROUTES } from '../../helpers/ROUTES';
 // api-requests
 import getAllTypes from '../../api_requests/getAllTypes';
 import postNewPokemon from '../../api_requests/postNewPokemon';
@@ -9,11 +11,11 @@ import postNewPokemon from '../../api_requests/postNewPokemon';
 import validate from '../../helpers/validate';
 
 const Form = () => {
-
+    const navigate = useNavigate()
     const [types, setTypes] = useState([])
     const [pokemon, setPokemon] = useState({
         name: '',
-        hp: 100,
+        hp: 50,
         attack: 50,
         defense: 50,
         speed: 50,
@@ -68,8 +70,25 @@ const Form = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        for (const prop in pokemon) {
+            if (!pokemon[prop]) {
+                window.alert(`${prop.toUpperCase()} cannot be empty`)
+                return
+            }
+        }
+        for (const prop in errors) {
+            if (errors[prop]) {
+                window.alert(`${errors[prop]}`)
+                return
+            }
+        }
+        if (!pokemon.types.length) {
+            window.alert('Your Pokemon must belong to at least 2 Types')
+            return
+        }
         try {
             const response = await postNewPokemon(pokemon)
+            navigate(ROUTES.detail + response.id)
         } catch (error) {
             window.alert(`Unable to post Pokemon: ${error.message}`)
         }
@@ -139,6 +158,9 @@ const Form = () => {
                     </div>
                 </form>
             </div>
+            <Link to={ROUTES.home}>
+                <div>{'<< HOME'}</div>
+            </Link>
         </div>
     )
 }

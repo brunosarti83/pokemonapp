@@ -1,0 +1,89 @@
+.bigContainer {
+    position: relative;
+}
+
+.margin {
+    width: 318px;
+    height: 362px;
+    position: absolute;
+    background-color: var(--my-red);
+    z-index: -2;
+    top: -5px;
+    left: -7px;
+    clip-path: polygon(23% 3%, 100% 0, 98% 79%, 100% 96%, 44% 100%, 24% 98%, 0 100%, 2% 55%, 0 0);
+}
+
+.otherMargin {
+    width: 310px;
+    height: 355px;
+    position: absolute;
+    background-color: var(--my-black);
+    z-index: -1;
+    top: -5px;
+    left: -8px;
+    clip-path: polygon(23% 3%, 100% 0, 98% 79%, 100% 96%, 43% 93%, 16% 100%, 0 88%, 2% 55%, 0 0);
+    transform: rotate(-3deg);
+}
+
+.Container {
+    box-sizing: border-box;
+    width: 300px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    background-color: var(--background-color);
+    box-shadow: 0px 3px 13px 4px rgba(15, 15, 15, 0.75);
+}
+
+
+.Name {
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.Types {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 1px solid var(--my-black);
+    width: 90%;
+    padding: 10px 5px 5px 5px;
+}
+
+.Container::after {
+    content: 'Types';
+    position: relative;
+    color: black;
+    background-color: var(--background-color);
+    top: -60px;
+    left: -90px;
+}
+
+.typeTag {
+    margin: auto;
+    width: 120px;
+    height: 25px;
+    padding-top: 5px;
+    text-align: center;
+    background-color: var(--my-black);
+    color: white;
+
+}
+
+.imageWrap {
+    max-height: 300px;
+    max-width: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}

@@ -2,3 +2,42 @@
     display: none;
 }
 
+.cardSection {
+    max-width: 90dvw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px;
+}
+
+.buttons {
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.backButton, .nextButton {
+    display: flex;
+    min-width: 70px;
+    width: 70%;
+    max-width: 200px;
+    height: 40px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    box-shadow: 2px 2px black;
+    background: linear-gradient(21deg, rgba(129,59,123,1) 14%, rgb(218, 130, 210) 84%);
+    &:hover {
+        cursor: pointer;
+        background: linear-gradient(21deg, rgb(255, 255, 255) 14%, rgb(255, 255, 255) 84%);
+    }
+    &:active {
+        background: linear-gradient(21deg, rgb(15, 15, 15) 14%, rgb(15, 15, 15) 84%);
+        color: white;
+    }
+}
+
+
+
