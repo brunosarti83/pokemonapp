@@ -44,7 +44,7 @@ const Cards = () => {
     }
 
     const nextPage = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.scrollTo({ top: 550, behavior: 'smooth' })
         setPag(pag + 1)
     }
 
