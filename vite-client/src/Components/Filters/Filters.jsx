@@ -8,6 +8,7 @@ import getAllTypes from '../../api_requests/getAllTypes';
 import { filterPokemons } from '../../redux/actions';
 
 
+
 const Filters = () => {
 
     const dispatch = useDispatch()
@@ -59,9 +60,10 @@ const Filters = () => {
 
     return (
         <div className={styles.Container}>
+            <h4 className={styles.firstParag}>Filter characters of a certain Type or based on weather they are user-created</h4>
+            <img className={styles.filterImage} src="https://freepngimg.com/download/pokemon/20252-5-pokemon-transparent-background.png" alt="pokemon png icon @transparentpng.com"/>
             <div className={styles.wrapper}>
                 <div className={styles.filters}>
-
                     <label className={styles.typeLabel} htmlFor="type">Type: </label>
                     <select className={styles.typeSelect} name="type" id="type" onChange={handleFilters} value={filterObj.type}>
                         <option value="all">- All -</option>
@@ -84,7 +86,7 @@ const Filters = () => {
                 <br />
                 <div className={styles.order}>
                     <div className={styles.orderBy}>
-                        <label htmlFor="orderBy">Order by: </label>
+                        <label className={styles.orderBy} htmlFor="orderBy">Order by: </label>
                         <select name="orderBy" id="orderBy" onChange={handleFilters} value={filterObj.orderBy}>
                             <option value="none">-None-</option>
                             <option value="name">Name</option>
