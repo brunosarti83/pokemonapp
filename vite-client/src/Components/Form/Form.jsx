@@ -11,8 +11,10 @@ import postNewPokemon from '../../api_requests/postNewPokemon';
 // validator
 import validate from '../../helpers/validate';
 
+
 const Form = () => {
     const navigate = useNavigate()
+    const [showPreview, setShowPreview] = useState(false)
     const [types, setTypes] = useState([])
     const [pokemon, setPokemon] = useState({
         name: '',
@@ -67,6 +69,24 @@ const Form = () => {
         }
         setPokemon({ ...pokemon, types: newTypes })
         setErrors(validate({ ...pokemon, types: newTypes }, 'types', { ...errors }))
+    }
+
+    const onPreview = async () => {
+        const url = pokemon.image
+        try {
+            //const isImg = await isImgUrl(url)
+            //if (isImg) {
+                setErrors({...errors, image:''})
+                document.documentElement.style.setProperty('--imagePreview', `url(${pokemon.image})`)
+                setShowPreview(true)
+            // } else {
+            //     setErrors({...errors, image: `url doesn't seem to link to an image`})
+            //     setShowPreview(false)
+            // }
+        } catch (error) {
+            setErrors({...errors, image: `Unable to check image, probably due to CORS`})
+            setShowPreview(false)
+        }
     }
 
     const handleSubmit = async (event) => {
@@ -148,8 +168,8 @@ const Form = () => {
                             <input name='image' type='text' value={pokemon.image} onChange={handleChange} />
                         </div>
                         <span className={styles.errors}>{errors.image}</span>
-                        <div className={styles.previewButton}>Preview</div>
-                        <div className={styles.imagePreview}></div>
+                        <div className={styles.previewButton} onClick={onPreview}>Preview</div>
+                        <div className={(showPreview) ? styles.imagePreview : styles.noImage}></div>
                     </div>
                     <div className={styles.typesSelector}>
                         {(types.length) && types.map((tipo) => {
@@ -166,8 +186,8 @@ const Form = () => {
                     </div>
                 </form>
             </div>
-            <Link to={ROUTES.home}>
-                <div>{'<< HOME'}</div>
+            <Link className={styles.homeButton} to={ROUTES.home}>
+                <div>{'HOME'}</div>
             </Link>
         </div>
     )

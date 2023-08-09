@@ -9,4 +9,5 @@
   --my-red: rgb(252, 14, 54);
   --purple-background: linear-gradient(21deg, rgba(129,59,123,1) 14%, rgb(218, 130, 210) 84%);
   --filters-height: 100%;
+  --imagePreview: '';
 }
