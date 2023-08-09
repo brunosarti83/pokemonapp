@@ -76,6 +76,7 @@ const validateTypes = (types) => {
 }
 
 
+
 const validate = (pokemon, prop, errors) => {
     const { name, hp, attack, defense, speed, height, weight, types } = pokemon
     switch (prop) {

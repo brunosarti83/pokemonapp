@@ -1,30 +1,211 @@
 
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    width: 100%;
+    min-height: 100dvh;
+}
+
+.Heading {
+    width: 95%;
+    height: 10vh;
+    background-color: var(--background-color);
+    margin: 10px auto 5px auto;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: -2px 3px 4px 4px rgba(15,15,15, 0.3);
+}
+
+.formWrapper {
+    background-color: var(--background-color);
+    width: 95%;
+    margin: 0 auto 5px auto;
+    padding-top: 10px;
+    box-shadow: -2px 3px 4px 4px rgba(15,15,15, 0.3);
+}
+
+.notTypes {
+    margin: 20px auto 10px auto;
+    width: 90%;
+}
+
+.selectorDiv, .imageSelectorDiv {
+    display: flex;
+}
+
+.StatsDiv {
+    margin: 30px auto;
+}
 
 
+.nameLabel, .healthLabel, .attackLabel,
+.defenseLabel, .speedLabel, .heightLabel,
+.weightLabel, .imageLabel {
+    margin-right: auto;
+    min-width: 150px;
+    text-align: left;
+}
+
+.imageSelectorDiv {
+    margin-top: 30px;
+}
 
 .typesSelector {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .typeTagOff {
     min-width: 70px;
     padding: 5px 50px;
-    border: 1px solid blue;
+    border: 1px solid var(--background-color);
+    background-color: var(--my-black);
+    color: white;
 }
 
 .typeTagOn {
     min-width: 70px;
     padding: 5px 50px;
-    border: 1px solid blue;
-    background-color: red;
+    border: 1px solid var(--my-red);
+    background-color: var(--my-red);
+    color: black;
 }
 
 .typeTagOn:hover {
     cursor: pointer;
+    border: 1px solid var(--my-red);
+    background-color: white;
+    color: black;
 }
 
 .typeTagOff:hover {
     cursor: pointer;
+    border: 1px solid var(--my-red);
+    background-color: white;
+    color: black;
 }
+
+.errors {
+    color: var(--my-red);
+    font-weight: 700;
+}
+
+
+
+
+
+input[type=range] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+}
+  
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+  
+input[type=range]:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+  
+input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+  
+    /* Hides the slider so custom styles can be added */
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range] {
+    --webkit-appearance: none;
+    margin: 18px 0;
+    width: 100%;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 7px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: coral;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 20px;
+    width: 12px;
+    border-radius: 3px;
+    background: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: coral;
+  }
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 7px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: coral;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 20px;
+    width: 12px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 7px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: var(--my-red);
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: var(--my-red);
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 20px;
+    width: 12px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: var(--my-red);
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: var(--my-red);
+  }
+
+
