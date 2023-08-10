@@ -6,20 +6,22 @@ import { ROUTES } from '../../helpers/ROUTES';
 
 const Card = (props) => {
     const { id, name, image, types } = props
+    const userGenerated = !Boolean(Number(id))
+    const nTypes = types.length
 
     return (
         <div className={styles.bigContainer}>
             <div className={styles.margin}></div>
             <div className={styles.otherMargin}></div>
-            <div className={styles.Container}>
+            <div className={(nTypes > 2) ? styles.ContainerBig : styles.Container}>
                 <div className={styles.margin}></div>
-                <div className={styles.imageWrap}>
+                <div className={userGenerated ? styles.imageWrapU : styles.imageWrap}>
                     <Link to={ROUTES.detail + id}>
                         <img src={image} alt={`${name}`} />
                     </Link>
                 </div>
                 <div className={styles.Name}>{name}</div>
-                <div className={styles.Types}>
+                <div className={(nTypes > 2) ? styles.TypesBig : styles.Types}>
                     {types.map((type, index) => {
                         return (<div key={index} className={styles.typeTag}>{type.name}</div>)
                     })}
