@@ -7,9 +7,11 @@ import { ROUTES } from '../../helpers/ROUTES';
 
 const Detail = (props) => {
     const { id, name, image, hp, attack, defense, speed, height, weight, Types } = props.pokemon
+    const size = ((name.length - 10) * -2) + 16
+    document.documentElement.style.setProperty('--name-size', `${size}dvw`)
 
     return (
-        <div className={styles.container}>
+        <div className={(Types.length < 3) ? styles.container : styles.containerBig}>
             <div className={styles.Heading}></div>
             <div className={styles.detailWrapper}>
                 <div className={styles.imgAndName}>
