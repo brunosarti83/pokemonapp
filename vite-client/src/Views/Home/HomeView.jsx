@@ -13,8 +13,10 @@ const HomeView = () => {
     return (
         <div className={styles.background}>
             <NavBar/>
-            <Hero/>
-            <PromoCreate/>
+            <div id={styles.wrap}>
+                <Hero/>
+                <PromoCreate/>
+            </div>
             <Filters/>
             <Cards/>
         </div>

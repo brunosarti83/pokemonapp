@@ -9,3 +9,10 @@
     padding-bottom: 50px;
 
 }
+
+#wrap {
+    margin: 80px auto 5px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

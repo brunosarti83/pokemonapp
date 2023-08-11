@@ -3,8 +3,10 @@
     margin-bottom: 20px;
     text-align: left;
     display: grid;
+    max-height: 350px;
+    max-width: 700px;
     grid-template-columns: repeat(12,1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .firstParag {
@@ -19,7 +21,7 @@
 
 .wrapper {
     grid-column: 4 / 12;
-    grid-row: 1 / 5; 
+    grid-row: 2 / 4; 
     max-width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;

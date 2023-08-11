@@ -5,6 +5,7 @@
     top: 0;
     width: 100%;
     background-color: var(--my-red);
+    border-bottom: 1px solid white;
 }
 
 
@@ -16,18 +17,24 @@
     height: 30px;
     margin: 0;
     padding: 0;
-    padding-top: 10px;
     padding-left: 10dvw;
+    height: 40px;
     
+}
+
+.linkBar ul li {
+    display: flex;
+    align-items: center;
 }
 
 .Link, .Link:visited {
     text-decoration: none;
     color: var(--my-black);
     margin: 0;
+    padding: 0;
 }
 
-.navH4 .by {
+.navH4, .by {
    align-self: center;
 }
 
@@ -38,6 +45,7 @@
 
 .lastLi {
     margin-left: auto;
+    align-self: center;
 }
 
 .Search {
@@ -46,6 +54,8 @@
     left: 0;
     width: 100%;
 }
+
+
 
 
 

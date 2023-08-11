@@ -10,9 +10,10 @@
 
 .Heading {
     width: 95%;
+    max-width: 760px;
     height: 10vh;
     background-color: var(--background-color);
-    margin: 10px auto 5px auto;
+    margin: 50px auto 5px auto;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
     box-shadow: -2px 3px 4px 4px rgba(15,15,15, 0.3);
@@ -21,6 +22,7 @@
 .formWrapper {
     background-color: var(--background-color);
     width: 95%;
+    max-width: 760px;
     margin: 0 auto 5px auto;
     padding-top: 10px;
     box-shadow: -2px 3px 4px 4px rgba(15,15,15, 0.3);
@@ -39,6 +41,9 @@
     margin: 30px auto;
 }
 
+.selectorDiv input {
+  width: clamp(120px, 50%, 300px);
+}
 
 .nameLabel, .healthLabel, .attackLabel,
 .defenseLabel, .speedLabel, .heightLabel,
@@ -50,6 +55,10 @@
 
 .imageSelectorDiv {
     margin-top: 30px;
+}
+
+.imageSelectorDiv input {
+  width: clamp(120px, 50%, 300px);
 }
 
 .noImage {
@@ -195,7 +204,7 @@
 
 input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-  width: 100%; /* Specific width is required for Firefox. */
+  width: clamp(120px, 50%, 300px); /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
 }
   
@@ -208,7 +217,7 @@ input[type=range]:focus {
 }
   
 input[type=range]::-ms-track {
-    width: 100%;
+  width: clamp(120px, 50%, 300px);
     cursor: pointer;
   
     /* Hides the slider so custom styles can be added */
@@ -220,13 +229,13 @@ input[type=range]::-ms-track {
 input[type=range] {
     --webkit-appearance: none;
     margin: 18px 0;
-    width: 100%;
+    width: clamp(120px, 50%, 300px);
   }
   input[type=range]:focus {
     outline: none;
   }
   input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
+    width: clamp(120px, 50%, 300px);
     height: 7px;
     cursor: pointer;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -249,7 +258,7 @@ input[type=range] {
     background: coral;
   }
   input[type=range]::-moz-range-track {
-    width: 100%;
+    width: clamp(120px, 50%, 300px);
     height: 7px;
     cursor: pointer;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -267,7 +276,7 @@ input[type=range] {
     cursor: pointer;
   }
   input[type=range]::-ms-track {
-    width: 100%;
+    width: clamp(120px, 50%, 300px);
     height: 7px;
     cursor: pointer;
     background: transparent;

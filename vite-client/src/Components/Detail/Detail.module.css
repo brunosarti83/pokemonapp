@@ -11,9 +11,10 @@
 
 .Heading {
     width: 95%;
+    max-width: 750px;
     height: 10vh;
     background-color: var(--background-color);
-    margin: 10px auto 5px auto;
+    margin: 50px auto 5px auto;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
     box-shadow: -2px 3px 4px 4px rgba(15,15,15, 0.3);
@@ -22,6 +23,7 @@
 .detailWrapper {
     background-color: var(--background-color);
     width: 95%;
+    max-width: 750px;
     margin: 0 auto 5px auto;
     padding-top: 10px;
     padding-bottom: 20px;
@@ -41,8 +43,7 @@
     text-transform: capitalize;
     grid-column: 1 / 9;
     grid-row: 1 / 4;
-    font-size: var(--name-size);
-    /* font-size: 20dvw; */
+    font-size: var(--name-size-var);
     margin-left: auto;
     margin-right: auto;
     color: rgba(15,15,15, 0.7);
@@ -63,8 +64,7 @@
     justify-content: center;
     margin: 30px auto 30px auto;
     gap: 12px;
-    font-size: 18px;
-    font-size: 6dvw;
+    font-size: clamp(14px, 6dvw, 22px);
 }
 
 
@@ -75,7 +75,7 @@
     justify-content: space-around;
     border: 1px solid var(--my-black);
     width: 90%;
-    padding: 10px 5px 5px 5px;
+    padding: 15px 5px 15px 5px;
     margin: auto;
     gap: 7px;
 }
@@ -90,24 +90,15 @@
     color: white;
 }
 
-.container::after {
+#stats:after {
+    font-size: 16px;
     content: 'Types';
     position: relative;
     width: 60px;
     color: black;
     background-color: var(--background-color);
-    top: -145px;
-    left: 40px;
-}
-
-.containerBig::after {
-    content: 'Types';
-    position: relative;
-    width: 60px;
-    color: black;
-    background-color: var(--background-color);
-    top: -180px;
-    left: 40px;
+    top: 38px;
+    left: -20dvw;
 }
 
 .homeButton {
@@ -136,3 +127,10 @@
       margin: auto;
     }
   }
+
+
+@media screen and (min-width: 800px) {
+    #name {
+        font-size: var(--name-size-fix);
+    }
+}

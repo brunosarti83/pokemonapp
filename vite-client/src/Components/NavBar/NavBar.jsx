@@ -3,10 +3,11 @@ import styles from './NavBar.module.css';
 // components
 import SearchBar from '../SearchBar/SearchBar';
 // hooks and tools
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ROUTES } from '../../helpers/ROUTES';
 
 const NavBar = () => {
+    const { pathname } = useLocation()
 
     return (
         <div className={styles.Container}>
@@ -28,7 +29,7 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className={styles.Search}>
-                <SearchBar />
+                {(pathname === ROUTES.home) && <SearchBar />}
             </div>
         </div>
     )

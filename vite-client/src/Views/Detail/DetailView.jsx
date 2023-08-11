@@ -2,6 +2,7 @@
 import styles from './DetailView.module.css';
 // components
 import Detail from '../../Components/Detail/Detail';
+import NavBar from '../../Components/NavBar/NavBar';
 // hooks
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -26,6 +27,7 @@ const DetailView = () => {
 
     return (
         <div>
+            <NavBar />
             {pokemon.id && <Detail pokemon={pokemon}/>}
         </div>
     )

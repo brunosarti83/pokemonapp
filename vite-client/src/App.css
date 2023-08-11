@@ -11,5 +11,6 @@
   --filters-height: 100%;
   --imagePreview: '';
   --box-shadow: -2px 3px 4px 4px rgba(15,15,15, 0.3);
-  --name-size: '';
+  --name-size-var: '';
+  --name-size-fix: '';
 }
