@@ -25,7 +25,7 @@
     transform: rotate(-3deg);
 }
 
-.Container, .ContainerBig {
+.Container {
     box-sizing: border-box;
     width: 300px;
     height: 350px;
@@ -54,32 +54,12 @@
     padding: 10px 5px 5px 5px;
 }
 
-.TypesBig {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    border: 1px solid var(--my-black);
-    width: 90%;
-    padding: 10px 5px 5px 5px;
-    gap: 7px;
-}
-
 .Container::after {
     content: 'Types';
     position: relative;
     color: black;
     background-color: var(--background-color);
     top: -60px;
-    left: -90px;
-}
-
-.ContainerBig::after {
-    content: 'Types';
-    position: relative;
-    color: black;
-    background-color: var(--background-color);
-    top: -97px;
     left: -90px;
 }
 

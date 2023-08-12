@@ -1,0 +1,101 @@
+
+.Container {
+    background-color: var(--my-red);
+    min-height: 100dvh;
+    position: relative;
+}
+
+
+.Wrapper {
+    display: grid;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(1fr);
+    align-items: top;
+    justify-content: start;
+    margin: auto;
+    padding-top: 30px;
+    text-shadow: -1px 1px white;
+    gap: 10px;
+}
+
+.landingImg {
+    grid-column: 2 / 12;
+    grid-row: 1 / 4;
+    height: max(600px, 85%);
+    width: min(600px, 97%);
+    box-shadow: var(--box-shadow);
+    background: url('../../images/toda-la-banda.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 16px;
+    filter: brightness(0.9);
+    justify-self: end;
+}
+
+.logoSector {
+    margin: 0;
+    padding: 0;
+    grid-column: 2 / 12;
+    grid-row: 1 / 2;
+    z-index: 4;
+    align-self: center;
+    margin-top: -80px;
+    margin-bottom: -90px;
+    max-width: 400px;
+}
+
+
+.intro {
+    margin-top: 30px;
+    margin-left: 10px;
+    grid-column: 2 / 10;
+    grid-row: 2 / 3;
+    z-index: 4;
+    text-align: left;
+    align-self: start;
+    font-size: max(16px, 2dvw);
+    font-style: italic;
+
+}
+
+
+
+.finalLine {
+    margin-top: 190px;
+    width: min(80%, 300px);
+    font-size: 20px;
+    font-style: italic;
+    color: var(--background-color);
+    text-shadow: -1px 1px black;
+    margin-left: 10px;
+}
+
+.Link {
+    font-size: 20px;
+    font-style: none;
+    text-decoration: none;
+    color: white;
+    text-shadow: none;
+}
+
+.buttonDiv {
+    background-color: var(--my-red);
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 250px;
+    margin-left: -10px;
+    border-top: 1px solid var(--background-color);
+    border-left: 1px solid var(--background-color);
+    box-shadow: 2px 3px var(--background-color);
+}
+
+
+
+

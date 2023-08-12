@@ -14,17 +14,15 @@
     grid-column: 2 / 12;
     grid-row: 1 / 7;
     max-height: 500px;
-    background: url('../../images/toda-la-banda.jpg');
+    /* background: url('../../images/toda-la-banda.jpg'); */
+    background: url('../../images/poke-ash-wp.jpg');
     background-position: center;
-
-    /* background: url('../../images/pikachu-y-pibito-front.jpg'); */
-    /* background-position: 25% 0%; */
 
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 16px;
     box-shadow: -2px 3px 4px 4px rgba(15,15,15, 0.3);
-    filter: brightness(0.9);
+    filter: brightness(0.7);
 }
 
 .heroH1, .heroH3, .heroH4 {

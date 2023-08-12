@@ -1,4 +1,3 @@
-import getPokemonsByName from "../api_requests/getPokemonsByName";
 
 
 const validateName = (name) => {
@@ -67,10 +66,10 @@ const validateWeight = (weight) => {
 
 const validateTypes = (types) => {
     if (types.length < 2) {
-        return 'You must select at least 2 types for your Pokemon'
+        return 'You must select 2 types for your Pokemon'
     }
-    if (types.length > 3) {
-        return `Your Pokemon can't belong to more than 3 types`
+    if (types.length > 2) {
+        return `Your Pokemon can't belong to more than 2 types`
     }
     return ''
 }
