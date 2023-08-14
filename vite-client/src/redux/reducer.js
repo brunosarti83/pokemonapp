@@ -71,10 +71,14 @@ const rootReducer = (state = initialState, action) => {
                 }
 
         case GET_BY_NAME:
-            return {
-                ...state,
-                showPokemons: action.payload,
-                savedPokemons: action.payload
+            if (!action.payload.length) {
+                return state
+            } else {
+                return {
+                    ...state,
+                    showPokemons: action.payload,
+                    savedPokemons: action.payload
+                }
             }
 
         case RELOAD:

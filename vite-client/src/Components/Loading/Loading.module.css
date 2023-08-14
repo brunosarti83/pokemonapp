@@ -1,0 +1,19 @@
+
+.Wrapper {
+    width: 200px;
+    height: 200px;
+    background: url('../../images/loading.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100px;
+    display: flex;
+    filter: brightness(0.9);
+}
+
+.Loading {
+    font-size: 26px;
+    font-weight: 700;
+    margin: auto;
+    color: white;
+}

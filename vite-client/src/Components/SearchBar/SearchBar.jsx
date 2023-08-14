@@ -25,6 +25,7 @@ const SearchBar = () => {
     const onClick = (name) => {
         onSearch(name)
         setName('')
+        window.scrollTo({ top: 650, behavior: 'smooth' })
     }
 
     const handleKeyPress = (event) => {

@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // Components
 import Card from '../Card/Card';
+import Loading from '../Loading/Loading';
 // actions
 import { getPokemons, setPage } from '../../redux/actions';
 
@@ -38,18 +39,18 @@ const Cards = () => {
 
 
     const previousPage = () => {
-        window.scrollTo({ top: 550, behavior: 'smooth' })
+        window.scrollTo({ top: 650, behavior: 'smooth' })
         dispatch(setPage(currentPage - 1))
     }
 
     const nextPage = () => {
-        window.scrollTo({ top: 550, behavior: 'smooth' })
+        window.scrollTo({ top: 650, behavior: 'smooth' })
         dispatch(setPage(currentPage + 1))
     }
 
     return (
         <div>
-            <div className={styles.index}>
+            <div className={(showPokemons.length) ? styles.index : styles.noShow}>
                 <div className={styles.pages}>
                     <span id={styles.pagesTitle}>Pages: </span>
                     <span id={(currentPage < 4) ? styles.noShow : styles.linktopage} onClick={()=>onPageClick(1)}>1,</span>
@@ -67,13 +68,14 @@ const Cards = () => {
                 </div>
             </div>
             <div className={styles.cardSection}>
-                {nowShowing.map(pokemon => {
+                {(showPokemons.length) ? nowShowing.map(pokemon => {
                     return <Card key={pokemon.id}
                         id={pokemon.id}
                         name={pokemon.name}
                         image={pokemon.image}
                         types={pokemon.Types} />
-                })
+                    })
+                    : <Loading/>
                 }
             </div>
             <div className={styles.buttons}>
