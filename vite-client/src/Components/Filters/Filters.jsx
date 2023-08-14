@@ -46,6 +46,10 @@ const Filters = () => {
         setFilterObj(newFilterObj)
     }
 
+    const handleDirection = (order) => {
+        setFilterObj({...filterObj, direction: order})
+    }
+
     const handleReset = () => {
         setFilterObj({
             type: 'all',
@@ -64,7 +68,7 @@ const Filters = () => {
     return (
         <div className={styles.Container}>
             <h4 className={styles.firstParag}>Filter characters of a certain Type or based on weather they are user-created</h4>
-            <img className={styles.filterImage} src={filterImage} alt="dragon-image"/>
+            <img className={styles.filterImage} src={filterImage} alt="dragon-image" />
             <div className={styles.wrapper}>
                 <div className={styles.filters}>
                     <label className={styles.typeLabel} htmlFor="type">Type: </label>
@@ -88,18 +92,17 @@ const Filters = () => {
                 </div>
                 <br />
                 <div className={styles.order}>
-                    <div className={styles.orderBy}>
+                    <div className={styles.orderByDiv}>
                         <label className={styles.orderBy} htmlFor="orderBy">Order by: </label>
                         <select name="orderBy" id="orderBy" onChange={handleFilters} value={filterObj.orderBy}>
                             <option value="none">-None-</option>
                             <option value="name">Name</option>
                             <option value="attack">Attack</option>
                         </select>
-                        <select name="direction" id="order-dir" onChange={handleFilters} value={filterObj.direction}>
-                            <option value="none">---------</option>
-                            <option value="A">-Ascending-</option>
-                            <option value="D">Descending</option>
-                        </select>
+                        <div className={styles.orderAD}>
+                            <span id={styles.Asc} className={(filterObj.orderBy !== 'none' && filterObj.direction === 'A') ? styles.on : styles.off} onClick={()=>handleDirection('A')}>A↑</span>
+                            <span id={styles.Desc} className={(filterObj.orderBy !== 'none' && filterObj.direction === 'D') ? styles.on : styles.off} onClick={()=>handleDirection('D')}>D↓</span>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.controls}>

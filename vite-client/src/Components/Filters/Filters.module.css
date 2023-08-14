@@ -67,6 +67,11 @@
 .orderBy {
     font-weight: 900;
     text-shadow: -1px 1px white;
+    margin-right: 10px;
+}
+
+.order {
+    display: flex;
 }
 
 .controls {
@@ -113,4 +118,30 @@
     align-self: end;
     transform: scaleX(-1);
     z-index: 1;
+}
+
+.orderByDiv {
+    display: flex;
+}
+
+.orderAD {
+    display: flex;
+    margin-left: 10px;
+}
+
+#Asc, #Desc {
+    padding-left: 2px;
+    padding-right: 2px;
+    &:hover {
+        font-weight: 700;
+        cursor: pointer;
+    }
+}
+
+.on {
+    color: var(--my-red);
+}
+
+.off {
+    color: grey;
 }
