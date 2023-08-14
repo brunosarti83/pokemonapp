@@ -5,15 +5,19 @@ const getApiPokemon = require('./getApiPokemon');
 
 const getApiPokemonByName = async (name) => {
     try {
-        const endpoint = `https://pokeapi.co/api/v2/pokemon?limit=2000`
-        const { data } = await axios.get(endpoint)
-        const { results } = data
-        const requests = []
-        results.forEach(result => {
-            if (result.name.includes(name)) {
-                requests.push(getApiPokemon(result.url, formatForCards))
-            }
-        })
+        let requests = []
+        let next = `https://pokeapi.co/api/v2/pokemon` 
+        while (next) {
+            const { data } = await axios.get(next)
+            const { results } = data
+            results.forEach(result => {
+                if (result.name.includes(name)) {
+                    requests.push(getApiPokemon(result.url, formatForCards))
+                }
+            })
+            next = data.next
+        }
+        
         if (requests.length) {
             const responses = await Promise.all(requests)
             return responses
