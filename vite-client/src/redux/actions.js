@@ -6,6 +6,8 @@ import getAllPokemons from '../api_requests/getAllPokemons';
 export const GET_POKEMONS = 'GET_POKEMONS';
 export const FILTER_POKEMONS = 'FILTER_POKEMONS';
 export const GET_BY_NAME = 'GET_BY_NAME';
+export const RELOAD = 'RELOAD';
+export const SET_PAGE = 'SET_PAGE';
 
 
 export const getPokemons = () => {
@@ -43,5 +45,18 @@ export const getByName = (name) => {
     }
 }
 
+export const reload = () => {
+    return {
+        type: RELOAD,
+        payload: ''
+    }
+}
+
+export const setPage = (page) => {
+    return {
+        type: SET_PAGE,
+        payload: page
+    }
+}
 
 

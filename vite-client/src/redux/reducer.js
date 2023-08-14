@@ -1,8 +1,16 @@
-import { GET_POKEMONS, FILTER_POKEMONS, GET_BY_NAME } from './actions';
+import { GET_POKEMONS, FILTER_POKEMONS, GET_BY_NAME, RELOAD, SET_PAGE } from './actions';
 
 const initialState = {
+    showPokemons: [],
+    savedPokemons: [],
     allPokemons: [],
-    savedPokemons: []
+    currentPage: 1,
+    reduxFilter: {
+        type: 'all',
+        origin: 'all',
+        orderBy: 'none',
+        direction: 'none',
+    }
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -10,53 +18,77 @@ const rootReducer = (state = initialState, action) => {
         case GET_POKEMONS:
             return {
                 ...state,
-                allPokemons: action.payload,
-                savedPokemons: action.payload
+                showPokemons: action.payload,
+                savedPokemons: action.payload,
+                allPokemons: action.payload
             }
         case FILTER_POKEMONS:
             const { type, origin, orderBy, direction } = action.payload
-            let filtered = [...state.savedPokemons]
-            if (type !== 'all') {
-                filtered = filtered.filter(poke => poke.Types.some(tipo => tipo.name === type))
-            }
-            if (origin !== 'all') {
-                if (origin === 'original') {
-                    filtered = filtered.filter(poke => Boolean(Number(poke.id)))
+            if (state.reduxFilter.type !== type
+                || state.reduxFilter.origin !== origin
+                || state.reduxFilter.orderBy !== orderBy
+                || state.reduxFilter.direction !== direction) {
+                    let filtered = [...state.savedPokemons]
+                    if (type !== 'all') {
+                        filtered = filtered.filter(poke => poke.Types.some(tipo => tipo.name === type))
+                    }
+                    if (origin !== 'all') {
+                        if (origin === 'original') {
+                            filtered = filtered.filter(poke => Boolean(Number(poke.id)))
+                        } else {
+                            filtered = filtered.filter(poke => !Boolean(Number(poke.id)))
+                        }
+                    }
+                    if (orderBy === 'name') {
+                        filtered.sort((a, b) => {
+                            if (a.name < b.name) {
+                                return (direction === 'A') ? -1 : 1
+                            } else if (a.name > b.name) {
+                                return (direction === 'A') ? 1 : -1
+                            } else {
+                                return 0
+                            }
+                        })
+                    } else if (orderBy === 'attack') {
+                        filtered.sort((a, b) => {
+                            if (a.attack < b.attack) {
+                                return (direction === 'A') ? -1 : 1
+                            } else if (a.attack > b.attack) {
+                                return (direction === 'A') ? 1 : -1
+                            } else {
+                                return 0
+                            }
+                        })
+                    }
+                    return {
+                        ...state,
+                        showPokemons: filtered,
+                        reduxFilter: action.payload,
+                        currentPage: 1
+                    }
                 } else {
-                    filtered = filtered.filter(poke => !Boolean(Number(poke.id)))
+                    return state
                 }
-            }
-            if (orderBy === 'name') {
-                filtered.sort((a, b) => {
-                    if (a.name < b.name) {
-                        return (direction === 'A') ? -1 : 1
-                    } else if (a.name > b.name) {
-                        return (direction === 'A') ? 1 : -1
-                    } else {
-                        return 0
-                    }
-                })
-            } else if (orderBy === 'attack') {
-                filtered.sort((a, b) => {
-                    if (a.attack < b.attack) {
-                        return (direction === 'A') ? -1 : 1
-                    } else if (a.attack > b.attack) {
-                        return (direction === 'A') ? 1 : -1
-                    } else {
-                        return 0
-                    }
-                })
-            }
-            return {
-                ...state,
-                allPokemons: filtered
-            }
 
         case GET_BY_NAME:
             return {
                 ...state,
-                allPokemons: action.payload,
+                showPokemons: action.payload,
                 savedPokemons: action.payload
+            }
+
+        case RELOAD:
+            return {
+                ...state,
+                showPokemons: [...state.allPokemons],
+                savedPokemons: [...state.allPokemons],
+                currentPage: 1
+            }
+
+        case SET_PAGE:
+            return {
+                ...state,
+                currentPage: action.payload
             }
         
         default:

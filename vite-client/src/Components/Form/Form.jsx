@@ -3,8 +3,11 @@ import styles from './Form.module.css';
 // hooks and tools
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { ROUTES } from '../../helpers/ROUTES';
 import { isImgUrl } from '../../helpers/isImgUrl';
+// actions
+import { getPokemons } from '../../redux/actions';
 // api-requests
 import getAllTypes from '../../api_requests/getAllTypes';
 import postNewPokemon from '../../api_requests/postNewPokemon';
@@ -14,6 +17,7 @@ import validate from '../../helpers/validate';
 
 const Form = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [showPreview, setShowPreview] = useState(false)
     const [types, setTypes] = useState([])
     const [pokemon, setPokemon] = useState({
@@ -109,6 +113,7 @@ const Form = () => {
         }
         try {
             const response = await postNewPokemon(pokemon)
+            dispatch(getPokemons())
             navigate(ROUTES.detail + response.id)
         } catch (error) {
             window.alert(`Unable to post Pokemon: ${error.message}`)

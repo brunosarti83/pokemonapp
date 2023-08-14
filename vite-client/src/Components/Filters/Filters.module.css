@@ -7,6 +7,7 @@
     max-width: 700px;
     grid-template-columns: repeat(12,1fr);
     grid-template-rows: repeat(3, 1fr);
+    margin-bottom: -20px;
 }
 
 .firstParag {
@@ -69,6 +70,8 @@
 }
 
 .controls {
+    display: flex;
+    gap: 5px;
     align-items: right;
 }
 
@@ -76,7 +79,7 @@
     border: 1px solid brown;
     padding: 7px;
     margin-top: 10px;
-    width: 60px;
+    width: 90px;
     margin: 10px 5px 10px auto;
     border-radius: 5px;
     background-color: var(--my-red);
@@ -85,6 +88,22 @@
     &:hover {
         cursor: pointer;
         background-color: darkred;
+    }
+}
+
+.reload {
+    border: 1px solid rgb(16, 170, 62);
+    padding: 7px;
+    margin-top: 10px;
+    width: 80px;
+    margin: 10px 5px 10px auto;
+    border-radius: 5px;
+    background-color: rgb(74, 214, 74);
+    color: white;
+    text-align: center;
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(3, 141, 14);
     }
 }
 

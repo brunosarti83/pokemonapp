@@ -2,23 +2,21 @@
 import styles from './Filters.module.css';
 // hooks and tools
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import getAllTypes from '../../api_requests/getAllTypes';
 // actions
-import { filterPokemons } from '../../redux/actions';
+import { filterPokemons, reload } from '../../redux/actions';
+// images
+import filterImage from '../../images/filter-image.png';
 
 
 
 const Filters = () => {
 
+    const reduxFilter = useSelector(state => state.reduxFilter)
     const dispatch = useDispatch()
     const [types, setTypes] = useState([])
-    const [filterObj, setFilterObj] = useState({
-        type: 'all',
-        origin: 'all',
-        orderBy: 'none',
-        direction: 'none',
-    })
+    const [filterObj, setFilterObj] = useState(reduxFilter)
 
     useEffect(() => {
         const getTypes = async () => {
@@ -57,11 +55,16 @@ const Filters = () => {
         })
     }
 
+    const handleReload = () => {
+        dispatch(reload())
+        handleReset()
+    }
+
 
     return (
         <div className={styles.Container}>
             <h4 className={styles.firstParag}>Filter characters of a certain Type or based on weather they are user-created</h4>
-            <img className={styles.filterImage} src="https://freepngimg.com/download/pokemon/20252-5-pokemon-transparent-background.png" alt="pokemon png icon @transparentpng.com"/>
+            <img className={styles.filterImage} src={filterImage} alt="dragon-image"/>
             <div className={styles.wrapper}>
                 <div className={styles.filters}>
                     <label className={styles.typeLabel} htmlFor="type">Type: </label>
@@ -100,7 +103,8 @@ const Filters = () => {
                     </div>
                 </div>
                 <div className={styles.controls}>
-                    <div className={styles.reset} onClick={handleReset}>Reset</div>
+                    <div className={styles.reload} onClick={handleReload}>Reload All</div>
+                    <div className={styles.reset} onClick={handleReset}>Reset Filters</div>
                 </div>
             </div>
         </div>

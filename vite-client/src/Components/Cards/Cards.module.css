@@ -39,5 +39,46 @@
     }
 }
 
+.index {
+    display: flex;
+    height: 30px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    max-width: 95%;
+}
 
+.pages {
+    margin: auto;
+    font-size: 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
 
+.showing {
+    margin-left: auto;
+}
+
+#noShow {
+    display: none;
+}
+
+#pagesTitle {
+    margin-right: 5px;
+}
+
+#current {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--my-red);
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#linktopage {
+    &:hover {
+        cursor: pointer;
+    }
+}
