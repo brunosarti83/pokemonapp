@@ -41,15 +41,16 @@
 
 .index {
     display: flex;
+    flex-wrap: wrap;
     height: 30px;
     margin-bottom: 20px;
     align-items: center;
     justify-content: center;
-    max-width: 95%;
+    max-width: 90dvw;
 }
 
 .pages {
-    margin: auto;
+    margin-right: auto;
     font-size: 20px;
     display: flex;
     align-items: baseline;
@@ -58,6 +59,7 @@
 
 .showing {
     margin-left: auto;
+    white-space: nowrap;
 }
 
 #noShow {
@@ -80,5 +82,21 @@
 #linktopage {
     &:hover {
         cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .cardSection {
+        margin-top: 40px;
+    }
+    .index {
+        margin-top: 30px;
+        row-gap: 7px;
+    }
+    .pages {
+        margin: auto;
+    }
+    .showing {
+        margin: auto;
     }
 }
