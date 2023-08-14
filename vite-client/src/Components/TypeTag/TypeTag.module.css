@@ -1,0 +1,13 @@
+
+.typeTag {
+    margin: auto;
+    width: 120px;
+    height: 25px;
+    padding-top: 5px;
+    text-align: center;
+    background-color: var(--my-black);
+    color: white;
+    &:hover {
+        cursor: pointer;
+    }
+}

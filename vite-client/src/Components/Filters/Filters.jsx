@@ -30,6 +30,10 @@ const Filters = () => {
         dispatch(filterPokemons(filterObj))
     }, [filterObj])
 
+    useEffect(()=> {
+        setFilterObj(reduxFilter)
+    },[reduxFilter])
+
     const capitalize = (string => string.charAt(0).toUpperCase() + string.slice(1))
 
     const handleFilters = (event) => {

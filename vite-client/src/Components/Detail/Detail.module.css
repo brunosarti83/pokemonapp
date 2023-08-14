@@ -63,6 +63,20 @@
     width: auto;
 }
 
+#imageU {
+    grid-column: 1 / 9;
+    grid-row: 3 / 9;
+    align-self: center;
+    justify-self: center;
+    z-index: 2;
+    max-width: 90%;
+    max-height: 500px;
+    
+    height: 100%;
+    width: auto;
+}
+
+
 #stats {
     display: flex;
     flex-direction: column;
@@ -87,16 +101,6 @@
     padding: 15px 5px 15px 5px;
     margin: auto;
     gap: 7px;
-}
-
-.typeTag {
-    margin: auto;
-    width: 120px;
-    height: 25px;
-    padding-top: 5px;
-    text-align: center;
-    background-color: var(--my-black);
-    color: white;
 }
 
 #stats:after {

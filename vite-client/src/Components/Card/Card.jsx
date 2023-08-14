@@ -3,6 +3,8 @@ import styles from './Card.module.css';
 // hooks and tools
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../helpers/ROUTES';
+// components
+import TypeTag from '../TypeTag/TypeTag';
 
 const Card = (props) => {
     const { id, name, image, types } = props
@@ -22,7 +24,7 @@ const Card = (props) => {
                 <div className={styles.Name}>{name}</div>
                 <div className={styles.Types}>
                     {types.map((type, index) => {
-                        return (<div key={index} className={styles.typeTag}>{type.name}</div>)
+                        return (<TypeTag key={index} typeName={type.name}/>)
                     })}
                 </div>
             </div>

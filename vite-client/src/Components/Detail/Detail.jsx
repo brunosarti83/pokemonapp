@@ -3,10 +3,13 @@ import styles from './Detail.module.css';
 // hooks and tools
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../helpers/ROUTES';
+// components
+import TypeTag from '../TypeTag/TypeTag';
 
 
 const Detail = (props) => {
     const { id, name, image, hp, attack, defense, speed, height, weight, Types } = props.pokemon
+    const userGenerated = !Boolean(Number(id))
     const sizeVar = ((name.length - 10) * -2) + 16
     const sizeFix = ((750 / name.length) * 1.6) 
     document.documentElement.style.setProperty('--name-size-var', `${sizeVar}dvw`)
@@ -17,7 +20,7 @@ const Detail = (props) => {
             <div className={styles.Heading}></div>
             <div className={styles.detailWrapper}>
                 <div className={styles.imgAndName}>
-                    <img id={styles.image} src={image} alt={name} />
+                    <img id={(userGenerated) ? styles.imageU : styles.image} src={image} alt={name} />
                     <h4 id={styles.name}>{name}</h4>
                 </div>
                 <div id={styles.stats}>
@@ -30,7 +33,7 @@ const Detail = (props) => {
                 </div>
                 <div className={styles.Types}>
                     {Types.map((type, index) => {
-                        return (<div key={index} className={styles.typeTag}>{type.name}</div>)
+                        return (<TypeTag key={index} typeName={type.name}/>)
                     })}
                 </div>
             </div>

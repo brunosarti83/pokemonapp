@@ -73,11 +73,13 @@
 .logo {
     grid-column: 1 / 2;
     grid-row: 1 /2;
-    align-self: bottom;
+    align-self: center;
     justify-self: center;
     z-index: 8;
     width: auto;
     height: 100px;
+    width: auto;
+    
 }
 
 .pokeball {
@@ -87,4 +89,5 @@
     justify-self: center;
     width: auto;
     height: 35px;
+    margin-bottom: 60px;
 }

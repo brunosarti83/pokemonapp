@@ -63,16 +63,6 @@
     left: -90px;
 }
 
-.typeTag {
-    margin: auto;
-    width: 120px;
-    height: 25px;
-    padding-top: 5px;
-    text-align: center;
-    background-color: var(--my-black);
-    color: white;
-}
-
 .imageWrap {
     max-height: 300px;
     max-width: auto;
@@ -95,4 +85,5 @@ img {
     max-width: 100%;
     max-height: 100%;
     border-radius: 16px;
+    margin: auto;
 }
