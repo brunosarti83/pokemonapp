@@ -82,6 +82,7 @@
     text-shadow: none;
 }
 
+
 .buttonDiv {
     background-color: var(--my-red);
     padding: 10px 20px 10px 20px;
@@ -94,7 +95,13 @@
     border-top: 1px solid var(--background-color);
     border-left: 1px solid var(--background-color);
     box-shadow: 2px 3px var(--background-color);
+    transition: 0.5s;
+    &:hover {
+        transform: translateY(-15px);
+    }
 }
+
+
 
 
 
