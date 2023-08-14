@@ -39,12 +39,12 @@ const Cards = () => {
 
 
     const previousPage = () => {
-        window.scrollTo({ top: 650, behavior: 'smooth' })
+        window.scrollTo({ top: 850, behavior: 'smooth' })
         dispatch(setPage(currentPage - 1))
     }
 
     const nextPage = () => {
-        window.scrollTo({ top: 650, behavior: 'smooth' })
+        window.scrollTo({ top: 850, behavior: 'smooth' })
         dispatch(setPage(currentPage + 1))
     }
 
