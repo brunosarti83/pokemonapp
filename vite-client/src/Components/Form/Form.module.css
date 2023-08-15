@@ -31,6 +31,8 @@
 .notTypes {
     margin: 20px auto 10px auto;
     width: 90%;
+    display: flex;
+    flex-direction: column;
 }
 
 .selectorDiv, .imageSelectorDiv {
@@ -39,6 +41,7 @@
 
 .StatsDiv {
     margin: 30px auto;
+    width: 100%;
 }
 
 .selectorDiv input {
@@ -59,6 +62,11 @@
 
 .imageSelectorDiv input {
   width: clamp(120px, 50%, 300px);
+}
+
+.imageLoader {
+  margin-left: auto;
+  margin-right: 5px;
 }
 
 .noImage {
@@ -105,7 +113,7 @@
 }
 
 .typeTagOff {
-    min-width: 70px;
+    min-width: 60px;
     padding: 5px 50px;
     border: 1px solid var(--background-color);
     background-color: var(--my-black);
@@ -113,7 +121,7 @@
 }
 
 .typeTagOn {
-    min-width: 70px;
+    min-width: 60px;
     padding: 5px 50px;
     border: 1px solid var(--my-red);
     background-color: var(--my-red);

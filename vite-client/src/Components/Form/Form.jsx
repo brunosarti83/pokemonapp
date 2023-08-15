@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ROUTES } from '../../helpers/ROUTES';
-import { isImgUrl } from '../../helpers/isImgUrl';
 // actions
 import { getPokemons } from '../../redux/actions';
 // api-requests
@@ -13,6 +12,8 @@ import getAllTypes from '../../api_requests/getAllTypes';
 import postNewPokemon from '../../api_requests/postNewPokemon';
 // validator
 import validate from '../../helpers/validate';
+// libraries
+import axios from 'axios';
 
 
 const Form = () => {
@@ -78,15 +79,9 @@ const Form = () => {
     const onPreview = async () => {
         const url = pokemon.image
         try {
-            //const isImg = await isImgUrl(url)
-            //if (isImg) {
-                setErrors({...errors, image:''})
-                document.documentElement.style.setProperty('--imagePreview', `url(${pokemon.image})`)
-                setShowPreview(true)
-            // } else {
-            //     setErrors({...errors, image: `url doesn't seem to link to an image`})
-            //     setShowPreview(false)
-            // }
+            setErrors({...errors, image:''})
+            document.documentElement.style.setProperty('--imagePreview', `url(${pokemon.image})`)
+            setShowPreview(true)
         } catch (error) {
             setErrors({...errors, image: `Unable to check image, probably due to CORS`})
             setShowPreview(false)
@@ -117,6 +112,30 @@ const Form = () => {
             navigate(ROUTES.detail + response.id)
         } catch (error) {
             window.alert(`Unable to post Pokemon: ${error.message}`)
+        }
+    }
+
+    const handleImageUpload = async (e) => {
+
+        const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'brunoprueba1983'); 
+    
+        try {
+          const response = await axios.post(
+            `https://api.cloudinary.com/v1_1/daiztctac/upload`,
+            formData,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            }
+          );
+    
+          setPokemon({...pokemon, image: response.data.secure_url});
+        } catch (error) {
+          window.alert('Error uploading image:', error.message);
         }
     }
 
@@ -171,6 +190,10 @@ const Form = () => {
                         <div className={styles.imageSelectorDiv}>
                             <label className={styles.imageLabel} htmlFor='image'>Image (url):</label>
                             <input name='image' type='text' value={pokemon.image} onChange={handleChange} />
+                        </div>
+                        <div className={styles.imageLoader}>
+                            <input type="file" id="image" name="image"
+                            accept=".jpg, .jpeg, .png" onChange={handleImageUpload}/>
                         </div>
                         <span className={styles.errors}>{errors.image}</span>
                         <div className={styles.previewButton} onClick={onPreview}>Preview</div>
