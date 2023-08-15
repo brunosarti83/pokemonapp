@@ -120,8 +120,7 @@ const Form = () => {
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('upload_preset', 'brunoprueba1983'); 
-    
+        formData.append('upload_preset', 'brunoprueba1983');     
         try {
           const response = await axios.post(
             `https://api.cloudinary.com/v1_1/daiztctac/upload`,
@@ -132,8 +131,8 @@ const Form = () => {
               },
             }
           );
-    
           setPokemon({...pokemon, image: response.data.secure_url});
+          
         } catch (error) {
           window.alert('Error uploading image:', error.message);
         }
