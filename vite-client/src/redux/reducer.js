@@ -1,4 +1,4 @@
-import { GET_POKEMONS, FILTER_POKEMONS, GET_BY_NAME, RELOAD, SET_PAGE } from './actions';
+import { GET_POKEMONS, FILTER_POKEMONS, GET_BY_NAME, RELOAD, SET_PAGE, SET_LOADING } from './actions';
 
 const initialState = {
     showPokemons: [],
@@ -10,7 +10,8 @@ const initialState = {
         origin: 'all',
         orderBy: 'none',
         direction: 'none',
-    }
+    },
+    loading: false
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -20,7 +21,8 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 showPokemons: action.payload,
                 savedPokemons: action.payload,
-                allPokemons: action.payload
+                allPokemons: action.payload,
+                loading: false
             }
         case FILTER_POKEMONS:
             const { type, origin, orderBy, direction } = action.payload
@@ -64,22 +66,21 @@ const rootReducer = (state = initialState, action) => {
                         ...state,
                         showPokemons: filtered,
                         reduxFilter: action.payload,
-                        currentPage: 1
+                        currentPage: 1,
+                        loading: false
                     }
                 } else {
                     return state
                 }
 
-        case GET_BY_NAME:
-            if (!action.payload.length) {
-                return state
-            } else {
-                return {
-                    ...state,
-                    showPokemons: action.payload,
-                    savedPokemons: action.payload
-                }
+        case GET_BY_NAME: 
+            return {
+                ...state,
+                showPokemons: action.payload,
+                savedPokemons: action.payload,
+                loading: false
             }
+           
 
         case RELOAD:
             return {
@@ -93,6 +94,12 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentPage: action.payload
+            }
+
+        case SET_LOADING:
+            return {
+                ...state,
+                loading: action.payload
             }
         
         default:

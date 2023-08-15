@@ -4,7 +4,7 @@ import styles from './SearchBar.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 // actions
-import { getByName } from '../../redux/actions';
+import { getByName, setLoading } from '../../redux/actions';
 // images
 import pokeLogo from '../../images/black-pokemon-logo-transparent-27.png';
 import pokeBall from '../../images/pokeball-logo.png';
@@ -19,6 +19,7 @@ const SearchBar = () => {
     }
 
     const onSearch = (name) => {
+        dispatch(setLoading(true))
         dispatch(getByName(name))
     }
 

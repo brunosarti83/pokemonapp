@@ -8,6 +8,7 @@ export const FILTER_POKEMONS = 'FILTER_POKEMONS';
 export const GET_BY_NAME = 'GET_BY_NAME';
 export const RELOAD = 'RELOAD';
 export const SET_PAGE = 'SET_PAGE';
+export const SET_LOADING = 'SET_LOADING';
 
 
 export const getPokemons = () => {
@@ -59,4 +60,10 @@ export const setPage = (page) => {
     }
 }
 
+export const setLoading = (state) => {
+    return {
+        type: SET_LOADING,
+        payload: state
+    }
+}
 

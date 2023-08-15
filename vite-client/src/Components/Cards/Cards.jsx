@@ -7,13 +7,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import Card from '../Card/Card';
 import Loading from '../Loading/Loading';
 // actions
-import { getPokemons, setPage } from '../../redux/actions';
+import { getPokemons, setPage, setLoading } from '../../redux/actions';
 
 
 const Cards = () => {
 
     const showPokemons = useSelector((state) => state.showPokemons)
     const currentPage = useSelector((state) => state.currentPage)
+    const loading = useSelector((state) => state.loading)
     const [nowShowing, setNowShowing] = useState([])
     const dispatch = useDispatch()
 
@@ -21,6 +22,7 @@ const Cards = () => {
 
     useEffect(() => {
         if (!showPokemons.length) {
+            dispatch(setLoading(true))
             dispatch(getPokemons())
             dispatch(setPage(1))
         }
@@ -50,32 +52,32 @@ const Cards = () => {
 
     return (
         <div>
-            <div className={(showPokemons.length) ? styles.index : styles.noShow}>
+            <div className={(!loading) ? styles.index : styles.noShow}>
                 <div className={styles.pages}>
                     <span id={styles.pagesTitle}>Pages: </span>
-                    <span id={(currentPage < 4) ? styles.noShow : styles.linktopage} onClick={()=>onPageClick(1)}>1,</span>
+                    <span id={(currentPage < 4) ? styles.noShow : styles.linktopage} onClick={() => onPageClick(1)}>1,</span>
                     <span id={(currentPage < 5) ? styles.noShow : styles.prevDots}> ...</span>
-                    <span id={(currentPage < 3) ? styles.noShow : styles.linktopage} onClick={()=>onPageClick(currentPage-2)}> {currentPage-2},</span>
-                    <span id={(currentPage < 2) ? styles.noShow : styles.linktopage} onClick={()=>onPageClick(currentPage-1)}> {currentPage-1},</span>
+                    <span id={(currentPage < 3) ? styles.noShow : styles.linktopage} onClick={() => onPageClick(currentPage - 2)}> {currentPage - 2},</span>
+                    <span id={(currentPage < 2) ? styles.noShow : styles.linktopage} onClick={() => onPageClick(currentPage - 1)}> {currentPage - 1},</span>
                     <span id={styles.current}> {currentPage}{(currentPage !== Math.ceil(showPokemons.length / pokemonsPerPage) && ',')}</span>
-                    <span id={(currentPage+1 >= Math.ceil(showPokemons.length / pokemonsPerPage)) ? styles.noShow : styles.linktopage} onClick={()=>onPageClick(currentPage+1)}> {currentPage+1},</span>
-                    <span id={(currentPage+2 >= Math.ceil(showPokemons.length / pokemonsPerPage)) ? styles.noShow : styles.linktopage} onClick={()=>onPageClick(currentPage+2)}> {currentPage+2},</span>
-                    <span id={(currentPage+3 >= Math.ceil(showPokemons.length / pokemonsPerPage)) ? styles.noShow : styles.nextDots}>...</span>
-                    <span id={(currentPage >= Math.ceil(showPokemons.length / pokemonsPerPage)) ? styles.noShow : styles.linktopage} onClick={()=>onPageClick(Math.ceil(showPokemons.length / pokemonsPerPage))}> {Math.ceil(showPokemons.length / pokemonsPerPage)}</span>
+                    <span id={(currentPage + 1 >= Math.ceil(showPokemons.length / pokemonsPerPage)) ? styles.noShow : styles.linktopage} onClick={() => onPageClick(currentPage + 1)}> {currentPage + 1},</span>
+                    <span id={(currentPage + 2 >= Math.ceil(showPokemons.length / pokemonsPerPage)) ? styles.noShow : styles.linktopage} onClick={() => onPageClick(currentPage + 2)}> {currentPage + 2},</span>
+                    <span id={(currentPage + 3 >= Math.ceil(showPokemons.length / pokemonsPerPage)) ? styles.noShow : styles.nextDots}>...</span>
+                    <span id={(currentPage >= Math.ceil(showPokemons.length / pokemonsPerPage)) ? styles.noShow : styles.linktopage} onClick={() => onPageClick(Math.ceil(showPokemons.length / pokemonsPerPage))}> {Math.ceil(showPokemons.length / pokemonsPerPage)}</span>
                 </div>
                 <div className={styles.showing}>
-                    <span>Showing: {(pokemonsPerPage * currentPage)-pokemonsPerPage+1} - {(pokemonsPerPage * currentPage)} from {showPokemons.length}</span>
+                    <span>Showing: {(pokemonsPerPage * currentPage) - pokemonsPerPage + 1} - {(pokemonsPerPage * currentPage)} from {showPokemons.length}</span>
                 </div>
             </div>
             <div className={styles.cardSection}>
-                {(showPokemons.length) ? nowShowing.map(pokemon => {
-                    return <Card key={pokemon.id}
-                        id={pokemon.id}
-                        name={pokemon.name}
-                        image={pokemon.image}
-                        types={pokemon.Types} />
+                {(loading) ? <Loading />
+                    : nowShowing.map(pokemon => {
+                        return <Card key={pokemon.id}
+                            id={pokemon.id}
+                            name={pokemon.name}
+                            image={pokemon.image}
+                            types={pokemon.Types} />
                     })
-                    : <Loading/>
                 }
             </div>
             <div className={styles.buttons}>
