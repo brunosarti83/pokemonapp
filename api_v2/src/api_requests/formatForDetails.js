@@ -7,7 +7,7 @@ module.exports = (data) => {
         || data.sprites.other['official-artwork'].front_default
         || data.sprites.other['official-artwork'].front_shiny
         || data.sprites.front_default
-        || 'no-image'
+        || 'https://res.cloudinary.com/daiztctac/image/upload/v1692115308/lsyl3197rundfclyzmur.png'
     const pokemon = { id, name, image, height, weight }
     const props = ['hp', 'attack', 'defense', 'speed']
     props.forEach(prop => {

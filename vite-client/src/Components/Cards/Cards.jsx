@@ -66,7 +66,7 @@ const Cards = () => {
                     <span id={(currentPage >= Math.ceil(showPokemons.length / pokemonsPerPage)) ? styles.noShow : styles.linktopage} onClick={() => onPageClick(Math.ceil(showPokemons.length / pokemonsPerPage))}> {Math.ceil(showPokemons.length / pokemonsPerPage)}</span>
                 </div>
                 <div className={styles.showing}>
-                    <span>Showing: {(pokemonsPerPage * currentPage) - pokemonsPerPage + 1} - {(pokemonsPerPage * currentPage)} from {showPokemons.length}</span>
+                    <span>Showing: {(pokemonsPerPage * currentPage) - pokemonsPerPage + 1} - {Math.min((pokemonsPerPage * currentPage), showPokemons.length)} from {showPokemons.length}</span>
                 </div>
             </div>
             <div className={styles.cardSection}>
