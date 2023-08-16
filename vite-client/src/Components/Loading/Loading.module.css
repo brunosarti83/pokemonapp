@@ -1,4 +1,14 @@
 
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
 .Wrapper {
     width: 200px;
     height: 200px;
@@ -9,6 +19,7 @@
     border-radius: 100px;
     display: flex;
     filter: brightness(0.9);
+    animation: loading 4s infinite;
 }
 
 .Loading {
@@ -17,3 +28,4 @@
     margin: auto;
     color: white;
 }
+
