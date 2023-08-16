@@ -146,6 +146,6 @@
 
 @media screen and (min-width: 800px) {
     #name {
-        font-size: var(--name-size-fix);
+        font-size: min(var(--name-size-fix), 300px);
     }
 }
