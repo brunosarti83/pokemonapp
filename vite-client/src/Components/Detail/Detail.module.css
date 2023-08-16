@@ -40,6 +40,7 @@
 }
 
 #name {
+    text-align: justify;
     text-transform: capitalize;
     grid-column: 1 / 9;
     grid-row: 1 / 4;
@@ -50,9 +51,10 @@
     z-index: 3;
 }
 
+
 #image {
     grid-column: 1 / 9;
-    grid-row: 2 / 9;
+    grid-row: 3 / 9;
     align-self: center;
     justify-self: center;
     z-index: 2;
@@ -65,7 +67,7 @@
 
 #imageU {
     grid-column: 1 / 9;
-    grid-row: 3 / 9;
+    grid-row: 4 / 9;
     align-self: center;
     justify-self: center;
     z-index: 2;
