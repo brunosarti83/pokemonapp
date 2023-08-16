@@ -19,7 +19,7 @@
     border-radius: 100px;
     display: flex;
     filter: brightness(0.9);
-    animation: loading 2s;
+    animation: loading 2s infinite;
 }
 
 .Loading {
