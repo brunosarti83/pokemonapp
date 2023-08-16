@@ -54,7 +54,7 @@
 
 #image {
     grid-column: 1 / 9;
-    grid-row: 3 / 9;
+    grid-row: 2 / 9;
     align-self: center;
     justify-self: center;
     z-index: 2;
@@ -67,7 +67,7 @@
 
 #imageU {
     grid-column: 1 / 9;
-    grid-row: 4 / 9;
+    grid-row: 3 / 9;
     align-self: center;
     justify-self: center;
     z-index: 2;
