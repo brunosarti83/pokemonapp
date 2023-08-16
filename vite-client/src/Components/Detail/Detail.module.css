@@ -40,13 +40,11 @@
 }
 
 #name {
-    text-align: justify;
     text-transform: capitalize;
     grid-column: 1 / 9;
     grid-row: 1 / 4;
     font-size: var(--name-size-var);
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     color: rgba(15,15,15, 0.7);
     z-index: 3;
 }
