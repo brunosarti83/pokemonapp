@@ -25,6 +25,7 @@
     grid-column: 1 / span 3;
     grid-row: 1 / 2;
     height: 30px;
+    border-radius: 0;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     align-self: center;
