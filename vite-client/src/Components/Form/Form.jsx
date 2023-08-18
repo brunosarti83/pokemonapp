@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ROUTES } from '../../helpers/ROUTES';
+import loadImage from '../../helpers/loadImage';
 // actions
 import { getPokemons } from '../../redux/actions';
 // api-requests
@@ -12,8 +13,6 @@ import getAllTypes from '../../api_requests/getAllTypes';
 import postNewPokemon from '../../api_requests/postNewPokemon';
 // validator
 import validate from '../../helpers/validate';
-// libraries
-import axios from 'axios';
 
 
 const Form = () => {
@@ -116,22 +115,10 @@ const Form = () => {
     }
 
     const handleImageUpload = async (e) => {
-
-        const file = e.target.files[0];
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('upload_preset', 'brunoprueba1983');     
+        const file = e.target.files[0];    
         try {
-          const response = await axios.post(
-            `https://api.cloudinary.com/v1_1/daiztctac/upload`,
-            formData,
-            {
-              headers: {
-                'Content-Type': 'multipart/form-data',
-              },
-            }
-          );
-          setPokemon({...pokemon, image: response.data.secure_url});
+          const secureUrl = await loadImage(file)
+          setPokemon({...pokemon, image: secureUrl});
           
         } catch (error) {
           window.alert('Error uploading image:', error.message);
