@@ -2,7 +2,7 @@
 // This function formats the data coming from an official api /:id request to my api Pokemon Detail format
 
 module.exports = (data) => {
-    const { id, name, height, weight, stats, types } = data
+    let { id, name, height, weight, stats, types } = data
     name = name.toLowerCase()
     const api_id = id
     const image = data.sprites.other.dream_world.front_default
