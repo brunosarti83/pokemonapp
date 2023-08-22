@@ -73,12 +73,13 @@
 }
 
 .imageWrapU {
+    justify-self: start;
+    margin: auto;
     max-height: 230px;
     max-width: auto;
     overflow: hidden;
     display: flex;
     justify-content: center;
-    margin-bottom: auto;
 }
 
 img {

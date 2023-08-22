@@ -4,9 +4,13 @@ const getPokemonDetail = async (req, res) => {
     const { idPokemon } = req.params
     try {
         const pokemon = await getPokemonDetailHandler(idPokemon)
-        res.status(200).json(pokemon)
+        if (pokemon.name) {
+            res.status(200).json(pokemon)
+        } else {
+            res.status(404).json({error: 'Not Found'})
+        }
     } catch (error) {
-        res.status(500).json({error: error.message})
+        res.status(404).json({error: 'Not Found'})
     }
 }
 

@@ -5,7 +5,8 @@ const getPokemons = async (req, res) => {
     const { name } = req.query
     try {
         if (name) {
-            const pokemon = await getPokemonByNameHandler(name)
+            lowerCaseName = name.toLowerCase()
+            const pokemon = await getPokemonByNameHandler(lowerCaseName)
             res.status(200).json(pokemon)
         } else {
             const allPokemons = await getAllPokemonsHandler()

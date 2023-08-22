@@ -1,14 +1,19 @@
 
+.bigContainer {
+    width: 100%;
+    position: relative;
+}
+
 .Container {  
-    margin-bottom: 20px;
     text-align: left;
     display: grid;
     max-height: 350px;
     max-width: 700px;
     grid-template-columns: repeat(12,1fr);
     grid-template-rows: repeat(3, 1fr);
-    margin-bottom: -20px;
+    margin-inline: auto;  
 }
+
 
 .firstParag {
     grid-column: 2 / 12;

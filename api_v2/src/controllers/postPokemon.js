@@ -2,8 +2,8 @@ const postPokemonHandler = require('../handlers/postPokemonHandler');
 
 const postPokemon = async (req, res) => {
     const { types, ...pokemon } = req.body
-    if (types.length < 2 || types.length > 3) {
-        res.status(400).json({ error: 'Your Pokemon must belong to 2 or up to 3 Types' })
+    if (types.length < 2 || types.length >= 3) {
+        res.status(400).json({ error: 'Your Pokemon must belong to 2 Types' })
     } else {
         try {
             const id = await postPokemonHandler(pokemon, types)

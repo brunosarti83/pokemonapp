@@ -1,20 +1,12 @@
-const { Pokemon, Type } = require('../db');
+const getApiPokemonByName = require('../api_requests/getApiPokemonByName');
+const getDBPokemonByName = require('../database_requests/getDBPokemonByName')
 
 const getPokemonByNameHandler = async (name) => {
     try {
-        const pokemon = await Pokemon.findOne({ 
-            where: {
-                name: name
-            },
-            include: {
-                model: Type,
-                attributes: ['name'],
-                through: {
-                    attributes: []
-                }
-            }
-        })
-        return pokemon
+        const apiPokemons = await getApiPokemonByName(name)
+        const DBPokemons = await getDBPokemonByName(name)
+        return [...apiPokemons, ...DBPokemons]
+
     } catch (error) {
         throw error
     }

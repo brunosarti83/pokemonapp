@@ -1,6 +1,6 @@
 const axios = require('axios');
 // functions
-const formatPokemon = require('./formatPokemon');
+const formatForCards = require('./formatForCards');
 const getApiPokemon = require('./getApiPokemon');
 
 const getApiPokemonByName = async (name) => {
@@ -12,7 +12,7 @@ const getApiPokemonByName = async (name) => {
             const { results } = data
             results.forEach(result => {
                 if (result.name.includes(name)) {
-                    requests.push(getApiPokemon(result.url, formatPokemon))
+                    requests.push(getApiPokemon(result.url, formatForCards))
                 }
             })
             next = data.next

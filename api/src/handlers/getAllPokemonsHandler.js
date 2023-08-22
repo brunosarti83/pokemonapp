@@ -1,18 +1,13 @@
-const { Type, Pokemon } = require('../db');
+const getDBAllPokemons = require('../database_requests/getDBAllPokemons');
+const getApiAllPokemons = require('../api_requests/getApiAllPokemons');
 
 const getAllPokemonsHandler = async () => {
     try {
-        const pokemons = await Pokemon.findAll({
-            attributes: ['id', 'originalId', 'name', 'image', 'attack'],
-            include: {
-                model: Type,
-                attributes: ['name'],
-                through: {
-                    attributes: []
-                }
-            }
-        })
-        return pokemons
+        const allApiPokemons = await getApiAllPokemons()
+        const allDBPokemons = await getDBAllPokemons()
+        const unifiedPokemons = [...allApiPokemons, ...allDBPokemons]
+        return unifiedPokemons
+        
     } catch (error) {
         throw error
     }

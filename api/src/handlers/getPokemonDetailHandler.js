@@ -1,17 +1,17 @@
-const { Pokemon, Type } = require('../db');
+const getDBPokemon = require('../database_requests/getDBPokemon');
+const getApiPokemon = require('../api_requests/getApiPokemon');
+const formatForDetails = require('../api_requests/formatForDetails')
 
 const getPokemonDetailHandler = async (idPokemon) => {
     try {
-        const pokemon = await Pokemon.findByPk(idPokemon,{
-            include: {
-                model: Type,
-                attributes: ['name'],
-                through: {
-                    attributes: []
-                }
-            }
-        })
+        let pokemon;
+        if (Boolean(Number(idPokemon))) {
+            pokemon = await getApiPokemon(idPokemon, formatForDetails)
+        } else {
+            pokemon = await getDBPokemon(idPokemon)
+        }
         return pokemon
+        
     } catch (error) {
         throw error
     }
