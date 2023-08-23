@@ -9,7 +9,7 @@ const getDBPokemonByName = async (name) => {
             where: {
                 name: { [Op.like]: `%${name}%`}
             },
-            attributes: ['id', 'name', 'image', 'attack'],
+            attributes: ['id', 'api_id', 'name', 'image', 'attack'],
             include: {
                 model: Type,
                 attributes: ['name'],

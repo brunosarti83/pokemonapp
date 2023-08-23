@@ -36,9 +36,9 @@ const rootReducer = (state = initialState, action) => {
                     }
                     if (origin !== 'all') {
                         if (origin === 'original') {
-                            filtered = filtered.filter(poke => Boolean(Number(poke.id)))
+                            filtered = filtered.filter(poke => (poke.api_id))
                         } else {
-                            filtered = filtered.filter(poke => !Boolean(Number(poke.id)))
+                            filtered = filtered.filter(poke => (!poke.api_id))
                         }
                     }
                     if (orderBy === 'name') {
