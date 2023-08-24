@@ -1,8 +1,12 @@
 const { Type, Pokemon } = require('../db');
 
-const getDBAllPokemons = async () => {
+const getDBAllPokemons = async (limit, offset) => {
+
     try {
-        const dbPokemons = await Pokemon.findAll({
+        const count = await Pokemon.count()
+        const results = await Pokemon.findAll({
+            limit, 
+            offset,
             attributes: ['id', 'api_id','name', 'image', 'attack'],
             include: {
                 model: Type,
@@ -12,7 +16,7 @@ const getDBAllPokemons = async () => {
                 }
             }
         })
-        return dbPokemons || []
+        return { count, limit, offset, results }
         
     } catch (error) {
         throw error
