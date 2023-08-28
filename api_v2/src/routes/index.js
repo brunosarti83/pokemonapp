@@ -5,6 +5,8 @@ const getPokemons = require('../controllers/getPokemons')
 const getTypes = require('../controllers/getTypes')
 const getPokemonDetail = require('../controllers/getPokemonDetail')
 const postPokemon = require('../controllers/postPokemon')
+const getAvailable = require('../controllers/getAvailable')
+const postReserve = require('../controllers/postReserve')
 
 
 const router = Router();
@@ -15,5 +17,8 @@ router.get('/pokemons/:idPokemon', getPokemonDetail)
 router.get('/pokemons', getPokemons)
 router.post('/pokemons', postPokemon)
 router.get('/types', getTypes)
+//router.get('/reserves', getReserves)
+router.get('/search', getAvailable)
+router.post('/reserves', postReserve)
 
 module.exports = router;
