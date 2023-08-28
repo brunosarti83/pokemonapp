@@ -1,9 +1,8 @@
 const getDBAllPokemons = require('../database_requests/getDBAllPokemons');
 
-const getAllPokemonsHandler = async (inputs) => {
-    const { limit, offset } = inputs
+const getAllPokemonsHandler = async (query) => {
     try {
-        const allDBPokemons = await getDBAllPokemons(limit, offset)
+        const allDBPokemons = await getDBAllPokemons(query)
         return allDBPokemons
 
     } catch (error) {

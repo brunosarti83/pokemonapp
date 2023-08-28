@@ -6,7 +6,7 @@ const formatPokemon = require('./formatPokemon');
 const getApiAllPokemons = async () => {
     try {
         let requests = []
-        let next = `https://pokeapi.co/api/v2/pokemon`  
+        let next = `https://pokeapi.co/api/v2/pokemon?limit=2000`  
         while (next) {
             const { data } = await axios.get(next)
             const { results } = data

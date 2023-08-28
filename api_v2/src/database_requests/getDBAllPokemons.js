@@ -1,9 +1,15 @@
 const { Op } = require('sequelize')
 const { Type, Pokemon } = require('../db');
 
-const getDBAllPokemons = async (limit, offset, filterObj) => {
+const getDBAllPokemons = async (query) => {
 
-    const { type, origin, orderBy, direction } = filterObj
+    let { limit, offset, type, origin, orderBy, direction } = query
+    limit = Number(limit)
+    offset = Number(offset)
+
+    const order = [
+        [ orderBy ? orderBy : 'api_id', direction ? direction : 'ASC' ]
+    ]
     const where = {}
     const includeWhere = {}
     if (type) { includeWhere.name = type }
@@ -23,6 +29,7 @@ const getDBAllPokemons = async (limit, offset, filterObj) => {
         const results = await Pokemon.findAndCountAll({
             limit, 
             offset,
+            order,
             where,
             attributes: ['id', 'api_id','name', 'image', 'attack'],
             include: {

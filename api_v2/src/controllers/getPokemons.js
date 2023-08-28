@@ -2,14 +2,14 @@ const getAllPokemonsHandler = require('../handlers/getAllPokemonsHandler');
 const getPokemonByNameHandler = require('../handlers/getPokemonByNameHandler');
 
 const getPokemons = async (req, res) => {
-    const { name, limit, offset } = req.query
     try {
+        const { name, ...query } = req.query
         if (name) {
-            lowerCaseName = name.toLowerCase()
-            const pokemons = await getPokemonByNameHandler({limit, offset, lowerCaseName})
+            query.name = name.toLowerCase()
+            const pokemons = await getPokemonByNameHandler({ ...query })
             res.status(200).json(pokemons)
         } else {
-            const pokemons = await getAllPokemonsHandler({limit, offset})
+            const pokemons = await getAllPokemonsHandler({ ...query })
             res.status(200).json(pokemons)
         }
     } catch (error) {
