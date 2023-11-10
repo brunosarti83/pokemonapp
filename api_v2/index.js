@@ -20,6 +20,7 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const populateDB = require('./src/populateDB/populateDB.js')
+const performHealthCheck = require('./src/utils/performHelthCheck.js')
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
@@ -28,6 +29,8 @@ conn.sync({ force: false }).then(() => {
     populateDB()
     .then(()=> {
       console.log('...done')
+      performHealthCheck();
+      setInterval(performHealthCheck, 60000);
     })
   });
 });

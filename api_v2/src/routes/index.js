@@ -11,6 +11,7 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+router.get('/hc', (_, res) => { res.status(200).send('OK') });
 router.get('/pokemons/:idPokemon', getPokemonDetail)
 router.get('/pokemons', getPokemons)
 router.post('/pokemons', postPokemon)
