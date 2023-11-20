@@ -2,12 +2,17 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DEPLOY } = process.env;
 
 const sequelize = new Sequelize(
-   //`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
-   DB_DEPLOY,
-   {
+   //`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, // this is for local
+   //DB_DEPLOY, // this is for render.com one-line external URL
+   DB_NAME, DB_USER, DB_PASSWORD, // this  is for AWS RDS, watch out DB_NAME is 'postgres' NOT instance name
+   {  
+      host: DB_HOST, // this is for AWS RDS example: myinstance.123456789012.us-east-1.rds.amazonaws.com
+      dialect: 'postgres', // this is for AWS RDS
+      //port: 5432, // default is 5432
+
       logging: false, // set to console.log to see the raw SQL queries
       native: false, // lets Sequelize know we can use pg-native for ~30% more speed
    }
