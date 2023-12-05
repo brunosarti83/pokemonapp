@@ -2,16 +2,26 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DEPLOY } = process.env;
+
+//const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env; // for local or AWS
+//const { DB_URL, DB_SSL_ENABLED, DB_SSL_REJECT_UNAUTHORIZED } = process.env; // for render EXTERNAL
+const { DB_URL } = process.env; // for render internal
 
 const sequelize = new Sequelize(
    //`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, // this is for local
-   //DB_DEPLOY, // this is for render.com one-line external URL
-   DB_NAME, DB_USER, DB_PASSWORD, // this  is for AWS RDS, watch out DB_NAME is 'postgres' NOT instance name
+   DB_URL, // this is for render.com one-line internal/external URL
+   //DB_NAME, DB_USER, DB_PASSWORD, // this  is for AWS RDS, watch out DB_NAME is 'postgres' NOT instance name
    {  
-      host: DB_HOST, // this is for AWS RDS example: myinstance.123456789012.us-east-1.rds.amazonaws.com
-      dialect: 'postgres', // this is for AWS RDS
+      //host: DB_HOST, // this is for AWS RDS example: myinstance.123456789012.us-east-1.rds.amazonaws.com
+      //dialect: 'postgres', // this is for AWS RDS
       //port: 5432, // default is 5432
+
+      // dialectOptions: { // this ssl is for render.com use with EXTERNAL db url
+      //   ssl: {
+      //     require: DB_SSL_ENABLED === "true", // Control SSL requirement based on environment variable
+      //     rejectUnauthorized: DB_SSL_REJECT_UNAUTHORIZED === "true", // Control SSL rejection based on environment variable
+      //   },
+      // },
 
       logging: false, // set to console.log to see the raw SQL queries
       native: false, // lets Sequelize know we can use pg-native for ~30% more speed
