@@ -23,14 +23,14 @@ const populateDB = require('./src/populateDB/populateDB.js')
 const performHealthCheck = require('./src/utils/performHelthCheck.js')
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
     populateDB()
     .then(()=> {
       console.log('...done')
       performHealthCheck();
-      setInterval(performHealthCheck, 60000);
+      //setInterval(performHealthCheck, 60000);
     })
   });
 });
