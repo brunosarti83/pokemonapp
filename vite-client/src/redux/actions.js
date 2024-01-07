@@ -9,6 +9,7 @@ export const GET_BY_NAME = 'GET_BY_NAME';
 export const RELOAD = 'RELOAD';
 export const SET_PAGE = 'SET_PAGE';
 export const SET_LOADING = 'SET_LOADING';
+export const SET_DETAILPOKEMON = 'SET_DETAILPOKEMON';
 
 
 export const getPokemons = () => {
@@ -64,6 +65,13 @@ export const setLoading = (state) => {
     return {
         type: SET_LOADING,
         payload: state
+    }
+}
+
+export const setDetailPokemon = (pokemon) => {
+    return {
+        type: SET_DETAILPOKEMON,
+        payload: pokemon
     }
 }
 

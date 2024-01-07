@@ -1,9 +1,10 @@
-import { GET_POKEMONS, FILTER_POKEMONS, GET_BY_NAME, RELOAD, SET_PAGE, SET_LOADING } from './actions';
+import { GET_POKEMONS, FILTER_POKEMONS, GET_BY_NAME, RELOAD, SET_PAGE, SET_LOADING, SET_DETAILPOKEMON } from './actions';
 
 const initialState = {
     showPokemons: [],
     savedPokemons: [],
     allPokemons: [],
+    detailPokemon: null,
     currentPage: 1,
     reduxFilter: {
         type: 'all',
@@ -100,6 +101,12 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: action.payload
+            }
+
+        case SET_DETAILPOKEMON:
+            return {
+                ...state,
+                detailPokemon: action.payload
             }
         
         default:

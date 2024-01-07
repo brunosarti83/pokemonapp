@@ -69,7 +69,9 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
-
+    :hover {
+        cursor: pointer;
+    }
 }
 
 .imageWrapU {
@@ -80,6 +82,9 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
+    :hover {
+        cursor: pointer;
+    }
 }
 
 img {
