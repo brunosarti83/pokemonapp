@@ -33,7 +33,7 @@ const DetailView = () => {
   return (
     <div>
       <NavBar />
-      {pokemon.id && <Detail pokemon={pokemon} />}
+      {pokemon?.id && <Detail pokemon={pokemon} />}
     </div>
   );
 };
