@@ -5,6 +5,7 @@ import styles from "./Card.module.css";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../helpers/ROUTES";
 import { useDispatch } from "react-redux";
+import { viewTransitionWrapper } from "../../helpers/viewTransitionsWrapper";
 // actions
 import { setDetailPokemon } from "../../redux/actions";
 // components
@@ -18,7 +19,7 @@ const Card = (props) => {
 
   const onLink = () => {
     dispatch(setDetailPokemon(pokemon));
-    navigate(ROUTES.detail + id);
+    viewTransitionWrapper(() => navigate(ROUTES.detail + id));
   };
 
   return (

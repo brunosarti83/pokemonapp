@@ -1,9 +1,10 @@
 // styles
 import styles from "./Detail.module.css";
 // hooks and tools
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../helpers/ROUTES";
 import nameSizeSetter from "../../helpers/nameSizeSetter";
+import { viewTransitionWrapper } from "../../helpers/viewTransitionsWrapper";
 // components
 import TypeTag from "../TypeTag/TypeTag";
 
@@ -12,6 +13,16 @@ const Detail = (props) => {
     props.pokemon;
   const userGenerated = !Boolean(Number(id));
   nameSizeSetter(name);
+  const navigate = useNavigate();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  const onClickHome = () => {
+    viewTransitionWrapper(() => navigate(ROUTES.home));
+  };
 
   return (
     <div className={Types.length < 3 ? styles.container : styles.containerBig}>
@@ -44,9 +55,9 @@ const Detail = (props) => {
           })}
         </div>
       </div>
-      <Link className={styles.homeButton} to={ROUTES.home}>
+      <div className={styles.homeButton} onClick={onClickHome}>
         <div>{"HOME"}</div>
-      </Link>
+      </div>
     </div>
   );
 };
