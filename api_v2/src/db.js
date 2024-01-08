@@ -16,12 +16,12 @@ const sequelize = new Sequelize(
       //dialect: 'postgres', // this is for AWS RDS
       //port: 5432, // default is 5432
 
-      dialectOptions: { // this ssl is for render.com use with EXTERNAL db url
-        ssl: {
-          require: DB_SSL_ENABLED === "true", // Control SSL requirement based on environment variable
-          rejectUnauthorized: DB_SSL_REJECT_UNAUTHORIZED === "true", // Control SSL rejection based on environment variable
-        },
-      },
+      // dialectOptions: { // this ssl is for render.com use with EXTERNAL db url
+      //   ssl: {
+      //     require: DB_SSL_ENABLED === "true", // Control SSL requirement based on environment variable
+      //     rejectUnauthorized: DB_SSL_REJECT_UNAUTHORIZED === "true", // Control SSL rejection based on environment variable
+      //   },
+      // },
 
       logging: false, // set to console.log to see the raw SQL queries
       native: false, // lets Sequelize know we can use pg-native for ~30% more speed
