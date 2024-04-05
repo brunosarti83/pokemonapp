@@ -9,7 +9,7 @@ import store from "./redux/store";
 
 import axios from "axios";
 
-axios.defaults.baseURL = "https://pokemon-app-server-up23.onrender.com"; // 'http://localhost:3001'
+axios.defaults.baseURL = "http://3.137.191.150/"; // 'http://localhost:3001'
 
 // Use createRoot instead of ReactDOM.render
 const rootElement = document.getElementById("root");
