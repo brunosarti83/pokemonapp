@@ -6,6 +6,8 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 
 require('./db.js');
+// this is for hooking up frontend build
+const path = require('path');
 
 const server = express();
 
@@ -22,6 +24,23 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });
+
+// this is for hooking up frontend build
+const _dirname = path.dirname("")
+const buildPath = path.join(_dirname, "../vite-client/dist")
+
+server.use(express.static(buildPath))
+
+server.get('/*', function(req, res) {
+
+  res.sendFile(path.join(_dirname, "../vite-client/dist/index.html"),
+  function(err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  })
+})
+////
 
 server.use('/', routes);
 
