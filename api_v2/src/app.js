@@ -25,6 +25,8 @@ server.use((req, res, next) => {
   next();
 });
 
+server.use('/', routes);
+
 // this is for hooking up frontend build
 const _dirname = path.dirname("")
 const buildPath = path.join(_dirname, "../vite-client/dist")
@@ -32,7 +34,7 @@ const buildPath = path.join(_dirname, "../vite-client/dist")
 server.use(express.static(buildPath))
 
 server.get('/*', function(req, res) {
-
+  
   res.sendFile(path.join(_dirname, "../vite-client/dist/index.html"),
   function(err) {
     if (err) {
@@ -42,7 +44,6 @@ server.get('/*', function(req, res) {
 })
 ////
 
-server.use('/', routes);
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
